@@ -24,7 +24,7 @@ export function ThemeToggle() {
       aria-label="테마 전환"
     >
       {theme === "light" ? (
-        <Moon className="h-50px w-5" />
+        <Moon className="h-5 w-5" />
       ) : (
         <Sun className="h-5 w-5" />
       )}

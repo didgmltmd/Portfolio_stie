@@ -32,21 +32,10 @@ const projects = [
 
 export function Projects() {
   return (
-    <section id="projects" className="container mx-auto px-4 py-20">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="mb-4">프로젝트</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            다양한 프로젝트를 통해 얻은 경험과 학습 내용을 공유합니다
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
-        </div>
-      </div>
-    </section>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.map((project) => (
+        <ProjectCard key={project.title} {...project} />
+      ))}
+    </div>
   );
 }
