@@ -1,6 +1,6 @@
 import { Github, Mail, Linkedin } from "lucide-react";
 import { Button } from "../ui/button";
-import profile_image from "../../public/assets/profile_image.jpg"
+import profile_img from "../../public/assets/profile_image.jpg"
 
 export function Sidebar() {
   const scrollToSection = (id: string) => {
@@ -14,8 +14,8 @@ export function Sidebar() {
     <aside className="w-80 h-screen sticky top-0 bg-card border-r border-border flex flex-col p-8">
       {/* Profile Section */}
       <div className="mb-8">
-        <div className="w-50 h-50 rounded-2xl from-primary to-primary/60 mb-6 flex items-center justify-center">
-          <img src={profile_image} className="w-50 h-50 rounded-4xl"/>
+        <div className="w-50 h-50 rounded-2xl  from-primary to-primary/60 mb-6 flex items-center justify-center">
+          <img src={profile_img} className="w-50 h-50 rounded-4xl"/>
         </div>
         
         <h2 className="mb-2">프론트엔드 개발자<br /><b>양희승</b></h2>
@@ -54,6 +54,25 @@ export function Sidebar() {
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">블로그 글</span>
           <span className="text-primary">20+</span>
+        </div>
+      </div>
+
+      {/* Awards */}
+      <div className="py-6 border-t border-border">
+        <h4 className="text-sm mb-3">수상 경력</h4>
+        <div className="space-y-3">
+          <div className="text-xs">
+            <div className="text-foreground mb-1">🏆 해커톤 대상</div>
+            <div className="text-muted-foreground">2024</div>
+          </div>
+          <div className="text-xs">
+            <div className="text-foreground mb-1">🥇 프론트엔드 경진대회 1위</div>
+            <div className="text-muted-foreground">2023</div>
+          </div>
+          <div className="text-xs">
+            <div className="text-foreground mb-1">⭐ 우수 개발자상</div>
+            <div className="text-muted-foreground">2023</div>
+          </div>
         </div>
       </div>
 
