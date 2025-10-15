@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
 import { Badge } from "../ui/badge";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { BlogPost } from "../data/blogs";
+import type { BlogPost } from "../data/blogs";
 import { useNavigate } from "react-router-dom";
 
 interface BlogCardProps {

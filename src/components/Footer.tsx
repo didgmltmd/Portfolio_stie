@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail,Instagram } from "lucide-react";
+import { Github, Instagram } from "lucide-react";
 import { Button } from "../ui/button";
 
 export function Footer() {

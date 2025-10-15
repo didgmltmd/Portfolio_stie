@@ -1,4 +1,4 @@
-import { Github, Mail, Linkedin,Instagram } from "lucide-react";
+import { Github, Mail, Instagram } from "lucide-react";
 import { Button } from "../ui/button";
 import profile_img from "../../public/assets/profile_image.jpg"
 

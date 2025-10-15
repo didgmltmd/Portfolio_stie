@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
-import { Project } from "../data/projects";
+import type { Project } from "../data/projects";
 import { useNavigate } from "react-router-dom";
 
 interface ProjectCardProps {
