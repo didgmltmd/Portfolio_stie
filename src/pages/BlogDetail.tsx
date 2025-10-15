@@ -6,6 +6,7 @@ import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "../components/ThemeToggle";
+import type { ReactElement } from "react";
 
 export function BlogDetail() {
   const { id } = useParams();
@@ -39,7 +40,7 @@ export function BlogDetail() {
 
   const renderMarkdown = (content: string) => {
     const lines = content.split("\n");
-    const elements: JSX.Element[] = [];
+    const elements: ReactElement[] = [];
     let inCodeBlock = false;
     let codeContent: string[] = [];
     let codeLanguage = "";
