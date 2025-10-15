@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail,Instagram } from "lucide-react";
 import { Button } from "../ui/button";
 
 export function Footer() {
@@ -15,13 +15,22 @@ export function Footer() {
               </p>
               <div className="flex gap-3">
                 <Button variant="outline" size="icon" className="rounded-xl">
-                  <Github className="h-5 w-5" />
+                  <a href="https://github.com/didgmltmd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex justify-center align-middle"
+                  >
+                      <Github className="h-5 w-5" />
+                  </a>
                 </Button>
                 <Button variant="outline" size="icon" className="rounded-xl">
-                  <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button variant="outline" size="icon" className="rounded-xl">
-                  <Mail className="h-5 w-5" />
+                  <a href="https://www.instagram.com/little_sheep_133/?hl=ko"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex justify-center align-middle"
+                  >
+                      <Instagram className="h-5 w-5" />
+                  </a>
                 </Button>
               </div>
             </div>
@@ -53,14 +62,9 @@ export function Footer() {
                 <h4 className="mb-4">연락</h4>
                 <ul className="space-y-3 text-muted-foreground">
                   <li>
-                    <a href="#" className="hover:text-primary transition-colors">
-                      이메일
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-primary transition-colors">
-                      LinkedIn
-                    </a>
+                    <div className="hover:text-primary transition-colors">
+                      gomboy11@naver.com
+                    </div>
                   </li>
                 </ul>
               </div>
@@ -68,7 +72,7 @@ export function Footer() {
           </div>
           
           <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© 2025 Portfolio. Yonam Institute of Technology Univ</p>
+            <p>© 2025 YHS Portfolio. Yonam Institute of Technology Univ</p>
           </div>
         </div>
       </div>

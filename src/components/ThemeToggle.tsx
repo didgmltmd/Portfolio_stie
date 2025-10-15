@@ -22,11 +22,12 @@ export function ThemeToggle() {
       size="icon"
       onClick={toggleTheme}
       aria-label="테마 전환"
+      className="hover:cursor-pointer"
     >
       {theme === "light" ? (
-        <Moon className="h-5 w-5" />
-      ) : (
         <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
       )}
     </Button>
   );

@@ -6,12 +6,7 @@ export function ProfileSidebar() {
     'React',
     'TypeScript',
     'Tailwind CSS',
-    'Next.js',
-    'Redux',
-    'React Query',
-    'Vite',
     'Git',
-    'Figma',
     'REST API',
   ];
 
@@ -21,7 +16,7 @@ export function ProfileSidebar() {
       <div className="bg-card border border-border rounded-2xl p-6 sticky top-6">
         <div className="flex flex-row space-x-38">
           <h3 className="mb-4">About Me</h3>
-          <div className="mb-[-3px]">
+          <div className="">
             <ThemeToggle/>
           </div>
         </div>

@@ -29,13 +29,13 @@ export function Sidebar() {
       <nav className="flex-1 space-y-1">
         <button
           onClick={() => scrollToSection("projects")}
-          className="w-full text-left px-4 py-3 rounded-xl hover:bg-primary/10 text-foreground hover:text-primary transition-colors"
+          className="w-full text-left px-4 py-3 rounded-xl hover:bg-primary/10 text-foreground hover:text-primary transition-colors hover:cursor-pointer"
         >
           프로젝트
         </button>
         <button
           onClick={() => scrollToSection("blog")}
-          className="w-full text-left px-4 py-3 rounded-xl hover:bg-primary/10 text-foreground hover:text-primary transition-colors"
+          className="w-full text-left px-4 py-3 rounded-xl hover:bg-primary/10 text-foreground hover:text-primary transition-colors hover:cursor-pointer"
         >
           블로그
         </button>
@@ -70,9 +70,9 @@ export function Sidebar() {
 
       {/* Contact Buttons */}
       <div className="space-y-3 pt-6 border-t border-border">
-        <Button className="w-full rounded-xl justify-start hover:cursor-pointer" size="lg">
+        <Button className="w-full rounded-xl justify-start" size="lg">
           <Mail className="mr-2 h-5 w-5" />
-          연락하기
+          gomboy11@naver.com
         </Button>
         
         <div className="flex gap-2">

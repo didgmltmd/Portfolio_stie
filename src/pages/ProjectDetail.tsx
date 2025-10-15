@@ -1,18 +1,15 @@
-import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { projects } from "../data/projects";
 import { ArrowLeft, ExternalLink, Github, Calendar, Users, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 export function ProjectDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const project = projects.find((p) => p.id === id);
-
-  // 이미지 fallback 상태
-  const [heroSrc, setHeroSrc] = useState(project?.image ?? "");
 
   if (!project) {
     return (
@@ -29,28 +26,18 @@ export function ProjectDetail() {
     <div className="flex-1 bg-background">
       {/* Header */}
       <div className="border-b border-border bg-card">
-        <div className="container mx-auto px-8 py-6">
+        <div className="container mx-auto px-8 py-6 flex flex-row justify-between">
           <Button
             variant="ghost"
             onClick={() => navigate("/")}
-            className="mb-4 rounded-xl"
+            className="mb-1 rounded-xl hover:cursor-pointer"
           >
-            <ArrowLeft className="mr-2 h-4 w-4" />
+            <ArrowLeft className="mr-1 h-4 w-4" />
             프로젝트 목록으로
           </Button>
-        </div>
-      </div>
-
-      {/* Hero Image */}
-      <div className="w-full bg-gradient-to-br from-primary/5 to-primary/10">
-        <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 3" }}>
-          <img
-            src={heroSrc}
-            alt={project.title}
-            onError={() => setHeroSrc("/fallback.jpg")} /* public/fallback.jpg 준비 */
-            className="absolute inset-0 h-100 w-full object-cover"
-            loading="lazy"
-          />
+          <div className="flex hover:cursor-pointer">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
