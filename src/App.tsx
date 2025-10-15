@@ -14,7 +14,9 @@ export default function App() {
             path="/"
             element={
               <>
-                <Sidebar />
+                <div className="hidden lg:block">
+                  <Sidebar />
+                </div>
                 <div className="flex-1 flex flex-col">
                   <MainPage />
                 </div>

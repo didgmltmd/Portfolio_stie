@@ -45,7 +45,7 @@ export function Sidebar() {
       <div className="py-6 border-t border-border space-y-2">
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">프로젝트</span>
-          <span className="text-primary">5+</span>
+          <span className="text-primary">4+</span>
         </div>
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">경력</span>
@@ -53,7 +53,7 @@ export function Sidebar() {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">블로그 글</span>
-          <span className="text-primary">20+</span>
+          <span className="text-primary">1+</span>
         </div>
       </div>
 
@@ -79,7 +79,6 @@ export function Sidebar() {
           <Button variant="outline" size="icon" className="flex-1 rounded-xl hover:cursor-pointer">
             <a href="https://github.com/didgmltmd"
                 target="_blank"
-                rel="noopener noreferrer"
                 className="w-full flex justify-center align-middle"
               >
               <Github className="h-5 w-5" />
@@ -88,7 +87,6 @@ export function Sidebar() {
           <Button variant="outline" size="icon" className="flex-1 rounded-xl hover:cursor-pointer">
             <a href="https://www.instagram.com/little_sheep_133/?hl=ko"
                 target="_blank"
-                rel="noopener noreferrer"
                 className="w-full flex justify-center align-middle"
               >
                 <Instagram className="h-5 w-5" />
