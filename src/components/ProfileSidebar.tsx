@@ -1,4 +1,5 @@
 import { Badge } from "../ui/badge";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function ProfileSidebar() {
   const skills = [
@@ -18,7 +19,12 @@ export function ProfileSidebar() {
     <div className="w-80 space-y-6">
       {/* About Me Card */}
       <div className="bg-card border border-border rounded-2xl p-6 sticky top-6">
-        <h3 className="mb-4">About Me</h3>
+        <div className="flex flex-row space-x-38">
+          <h3 className="mb-4">About Me</h3>
+          <div className="mb-[-3px]">
+            <ThemeToggle/>
+          </div>
+        </div>
         <p className="text-sm text-muted-foreground leading-relaxed mb-6">
           성장중인 프론트엔드 개발자로, 
           사용자 경험을 최우선으로 생각하며 
