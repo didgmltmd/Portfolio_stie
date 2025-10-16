@@ -34,16 +34,22 @@ export function MainPage() {
         </div>
       </header>
       {/* Main */}
-      <main className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="mb-6 lg:mb-8 flex flex-col">
-          <div className="flex flex-row ">
+      <main id="projects" className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div className="mb-6 lg:mb-8 flex flex-col w-full">
+          <div className="flex w-full max-w-[52rem] justify-between items-center">
             <h2 className="text-2xl font-semibold tracking-tight mb-2">프로젝트</h2>
-            <Button variant="ghost" className="border-2 gap-2 hover:cursor-pointer ml-10" onClick={() => navigate('/projects')}>
-                전체보기
-                <ChevronRight className="w-4 h-4" />
+            <Button
+              variant="ghost"
+              className="border-2 gap-2 hover:cursor-pointer"
+              onClick={() => navigate('/projects')}
+            >
+              전체보기
+              <ChevronRight className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-muted-foreground">
+
+          {/* 설명 문단도 동일한 폭 기준으로 정렬 */}
+          <p className="text-muted-foreground w-full max-w-4xl">
             다양한 프로젝트를 통해 얻은 경험과 학습 내용을 공유합니다.
           </p>
         </div>

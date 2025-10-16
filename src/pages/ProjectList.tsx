@@ -5,6 +5,7 @@ import { projects } from "../data/projects";
 import { ChevronLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import { ThemeToggle } from "../components/ThemeToggle";
 
 
 const categories: ProjectCategory[] = ["프로젝트","해커톤","토이 프로젝트"];
@@ -19,13 +20,16 @@ export function ProjectListPage(){
 
         return(
             <div className="min-h-screen flex flex-col">
-                <header className="border-b sticky top-0 bg-background z-10">
+                <header className="border-b sticky top-0 bg-background z-10 flex flex-row justify-between">
                     <Link to="/">
-                        <Button variant="ghost" className="gap-2 hover:cursor-pointer">
+                        <Button variant="ghost" className="gap-2 hover:cursor-pointer h-14 ml-[3rem]">
                             <ChevronLeft className="w-4 h-4" />
                             홈으로
                         </Button>
                     </Link>
+                    <div className="flex align-middle items-center mr-[3rem]">
+                        <ThemeToggle />
+                    </div>
                 </header>
 
 
@@ -36,7 +40,7 @@ export function ProjectListPage(){
                             <nav className="space-y-2">
                                 <button
                                     onClick={() => setSelectedCategory("전체")}
-                                    className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                                    className={`hover:cursor-pointer w-full text-left px-4 py-2 rounded-lg transition-colors ${
                                         selectedCategory === "전체"
                                             ? "bg-primary text-primary-foreground"
                                             : "hover:bg-muted"
@@ -51,7 +55,7 @@ export function ProjectListPage(){
                                         <button
                                             key={category}
                                             onClick={() => setSelectedCategory(category)}
-                                            className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                                            className={`hover:cursor-pointer w-full text-left px-4 py-2 rounded-lg transition-colors ${
                                                 selectedCategory === category
                                                     ? "bg-primary text-primary-foreground"
                                                     : "hover:bg-muted"

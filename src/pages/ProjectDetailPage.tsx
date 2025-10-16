@@ -5,6 +5,7 @@ import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { Link } from "react-router-dom";
 
 export function ProjectDetail() {
   const { id } = useParams();
@@ -23,20 +24,19 @@ export function ProjectDetail() {
   }
 
   return (
-    <div className="flex-1 bg-background overflow-x-hidden">
-      <div className="fixed lg:sticky top-0 left-0 right-0 z-50 border-b bg-card/90 backdrop-blur">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="rounded-xl hover:cursor-pointer"
-          >
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            프로젝트 목록으로
-          </Button>
+    <div className="min-h-dvh w-full flex flex-col bg-background">
+      <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Link to="/">
+            <Button variant="ghost" className="gap-2 hover:cursor-pointer">
+              <ArrowLeft className="w-4 h-4" />
+              홈으로
+            </Button>
+          </Link>
           <ThemeToggle />
         </div>
-      </div>
+      </header>
+    <div className="flex-1 bg-background overflow-x-hidden">
 
       <div className="h-7" />
 
@@ -267,5 +267,6 @@ export function ProjectDetail() {
         </div>
       </div>
     </div>
+  </div>
   );
 }

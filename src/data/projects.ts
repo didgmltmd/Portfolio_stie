@@ -2,6 +2,7 @@ export type ProjectCategory  = "프로젝트" | "해커톤" | "토이 프로젝�
 
 export interface Project {
   id: string;
+  primary: boolean;
   title: string;
   description: string;
   image: string;
@@ -32,6 +33,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "ecommerce",
+    primary: false,
     title: "스마트 쇼핑 어플(Scan and Go)",
     description: "React-native와 TypeScript로 구축한 스마트 쇼핑 애플리케이션",
     image: "/assets/cart_project.png",
@@ -73,6 +75,7 @@ export const projects: Project[] = [
   },
   {
     id: "festival-app",
+    primary: true,
     title: "축제주문관리 시스템",
     description: "WebSocket을 활용한 실시간 주문관리 시스템",
     image: "/assets/fetival-project.png",
@@ -120,7 +123,8 @@ export const projects: Project[] = [
     outcome: "3명의 축제도우미 인원 감축 및 카운터와 조리구역간의 협업 능력향상하여 축제부스 운영에 기여하였습니다.",
   },
   {
-    id: "dashboard",
+    id: "portfolio",
+    primary: false,
     title: "포트폴리오 사이트",
     description: "나만의 포트폴리오 사이트",
     image: "/assets/portfolio_site.png",
@@ -154,11 +158,144 @@ export const projects: Project[] = [
   },
    {
     id: "dashboard",
+    primary: false,
     title: "동아리 신청 플랫폼",
     description: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
     image: "/assets/club_porject.png",
     tags: ["React", "Recharts", "Storybook", "Tailwind CSS"],
     category: "프로젝트",
+    retrospective: "진행중인 프로젝트",
+    demoUrl: "#",
+    githubUrl: "https://github.com/ClubApplicationPlatform",
+    overview: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    period: "2025.05 - 2025.12 (7개월)",
+    team: "프론트엔드 1명, 백엔드 5명",
+    role: "프론트엔드 리드 개발자 및 PM",
+    keyFeatures: [
+    ],
+    techStack: {
+      frontend: ["React", "TypeScript", "Tailwind CSS"],
+      backend: [],
+      deployment: [],
+    },
+    kpt: {
+      keep: [
+      ],
+      problem: [
+      ],
+      try: [
+      ],
+    },
+    challenges: "",
+    outcome: "",
+  },
+   {
+    id: "hackerton_0",
+    primary: true,
+    title: "안심 귀가길 서비스",
+    description: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    image: "/assets/club_porject.png",
+    tags: ["React", "Recharts", "Storybook", "Tailwind CSS"],
+    category: "해커톤",
+    retrospective: "진행중인 프로젝트",
+    demoUrl: "#",
+    githubUrl: "https://github.com/ClubApplicationPlatform",
+    overview: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    period: "2025.05 - 2025.12 (7개월)",
+    team: "프론트엔드 1명, 백엔드 5명",
+    role: "프론트엔드 리드 개발자 및 PM",
+    keyFeatures: [
+    ],
+    techStack: {
+      frontend: ["React", "TypeScript", "Tailwind CSS"],
+      backend: [],
+      deployment: [],
+    },
+    kpt: {
+      keep: [
+      ],
+      problem: [
+      ],
+      try: [
+      ],
+    },
+    challenges: "",
+    outcome: "",
+  },
+   {
+    id: "hackerton_1",
+    primary: true,
+    title: "내손안의 요양사",
+    description: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    image: "/assets/club_porject.png",
+    tags: ["React", "Recharts", "Storybook", "Tailwind CSS"],
+    category: "해커톤",
+    retrospective: "진행중인 프로젝트",
+    demoUrl: "#",
+    githubUrl: "https://github.com/ClubApplicationPlatform",
+    overview: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    period: "2025.05 - 2025.12 (7개월)",
+    team: "프론트엔드 1명, 백엔드 5명",
+    role: "프론트엔드 리드 개발자 및 PM",
+    keyFeatures: [
+    ],
+    techStack: {
+      frontend: ["React", "TypeScript", "Tailwind CSS"],
+      backend: [],
+      deployment: [],
+    },
+    kpt: {
+      keep: [
+      ],
+      problem: [
+      ],
+      try: [
+      ],
+    },
+    challenges: "",
+    outcome: "",
+  },
+  {
+    id: "toy_0",
+    primary: false,
+    title: "메이플 랭킹 시스템",
+    description: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    image: "/assets/club_porject.png",
+    tags: ["React", "Recharts", "Storybook", "Tailwind CSS"],
+    category: "토이 프로젝트",
+    retrospective: "진행중인 프로젝트",
+    demoUrl: "#",
+    githubUrl: "https://github.com/ClubApplicationPlatform",
+    overview: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    period: "2025.05 - 2025.12 (7개월)",
+    team: "프론트엔드 1명, 백엔드 5명",
+    role: "프론트엔드 리드 개발자 및 PM",
+    keyFeatures: [
+    ],
+    techStack: {
+      frontend: ["React", "TypeScript", "Tailwind CSS"],
+      backend: [],
+      deployment: [],
+    },
+    kpt: {
+      keep: [
+      ],
+      problem: [
+      ],
+      try: [
+      ],
+    },
+    challenges: "",
+    outcome: "",
+  },
+  {
+    id: "toy_1",
+    primary: false,
+    title: "스마트 카트 어플",
+    description: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
+    image: "/assets/club_porject.png",
+    tags: ["React", "Recharts", "Storybook", "Tailwind CSS"],
+    category: "토이 프로젝트",
     retrospective: "진행중인 프로젝트",
     demoUrl: "#",
     githubUrl: "https://github.com/ClubApplicationPlatform",
