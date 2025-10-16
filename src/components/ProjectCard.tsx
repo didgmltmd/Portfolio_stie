@@ -24,7 +24,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <img
           src={imgSrc}
           alt={project.title}
-          onError={() => setImgSrc("/fallback.jpg")} // public 폴더에 fallback 이미지 하나 두면 됨
+          onError={() => setImgSrc("/fallback.jpg")}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />

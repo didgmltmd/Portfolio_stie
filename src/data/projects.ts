@@ -1,9 +1,12 @@
+export type ProjectCategory  = "프로젝트" | "해커톤" | "토이 프로젝트";
+
 export interface Project {
   id: string;
   title: string;
   description: string;
   image: string;
   tags: string[];
+  category:ProjectCategory;
   retrospective: string;
   demoUrl?: string;
   githubUrl?: string;
@@ -33,6 +36,7 @@ export const projects: Project[] = [
     description: "React-native와 TypeScript로 구축한 스마트 쇼핑 애플리케이션",
     image: "/assets/cart_project.png",
     tags: ["React-native", "TypeScript", "Tailwind CSS"],
+    category: "프로젝트",
     retrospective: "진행중인 프로젝트입니다..!",
     demoUrl: "#",
     githubUrl: "#",
@@ -73,6 +77,7 @@ export const projects: Project[] = [
     description: "WebSocket을 활용한 실시간 주문관리 시스템",
     image: "/assets/fetival-project.png",
     tags: ["React", "WebSocket", "Node.js", "MUI"],
+    category: "프로젝트",
     retrospective: "실시간 통신의 어려움을 경험했습니다. 축제당일 금액오류,주문누락,주문서추적 등 현장에서 터진 오류에대한 대응이 가장 도전적이었습니다.",
     demoUrl: "#",
     githubUrl: "https://github.com/didgmltmd/festival_front",
@@ -120,6 +125,7 @@ export const projects: Project[] = [
     description: "나만의 포트폴리오 사이트",
     image: "/assets/portfolio_site.png",
     tags: ["React", "Typescript", "Tailwind CSS"],
+    category: "프로젝트",
     retrospective: "아직 프로토타입으로 20%정도 완성한거같습니다.",
     demoUrl: "#",
     githubUrl: "https://github.com/didgmltmd/Portfolio_stie",
@@ -152,6 +158,7 @@ export const projects: Project[] = [
     description: "교내 동아리들을 한곳에서 확인/신청할 수 있는 플랫폼",
     image: "/assets/club_porject.png",
     tags: ["React", "Recharts", "Storybook", "Tailwind CSS"],
+    category: "프로젝트",
     retrospective: "진행중인 프로젝트",
     demoUrl: "#",
     githubUrl: "https://github.com/ClubApplicationPlatform",

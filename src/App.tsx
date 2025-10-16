@@ -1,8 +1,9 @@
 import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Sidebar } from "./components/Sidebar";
 import { MainPage } from "./pages/MainPage";
-import { ProjectDetail } from "./pages/ProjectDetail";
-import { BlogDetail } from "./pages/BlogDetail";
+import { ProjectDetail } from "./pages/ProjectDetailPage";
+import { BlogDetail } from "./pages/BlogDetailPage";
+import { ProjectListPage } from "./pages/ProjectList";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           {/* Routes without Sidebar (Full Width) */}
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
+          <Route path="/projects" element={<ProjectListPage />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<Navigate to="/" replace />} />

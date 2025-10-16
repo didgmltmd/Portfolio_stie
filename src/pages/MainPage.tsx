@@ -7,8 +7,11 @@ import { Button } from "../ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "../ui/sheet";
 import { Menu } from "lucide-react";
 import { ThemeToggle } from "../components/ThemeToggle";
+import { ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export function MainPage() {
+  const navigate = useNavigate();
   return (
     <>
       {/* 모바일에서만 보이는 헤더 */}
@@ -32,8 +35,14 @@ export function MainPage() {
       </header>
       {/* Main */}
       <main className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="mb-6 lg:mb-8">
-          <h2 className="text-2xl font-semibold tracking-tight mb-2">프로젝트</h2>
+        <div className="mb-6 lg:mb-8 flex flex-col">
+          <div className="flex flex-row ">
+            <h2 className="text-2xl font-semibold tracking-tight mb-2">프로젝트</h2>
+            <Button variant="ghost" className="border-2 gap-2 hover:cursor-pointer ml-10" onClick={() => navigate('/projects')}>
+                전체보기
+                <ChevronRight className="w-4 h-4" />
+            </Button>
+          </div>
           <p className="text-muted-foreground">
             다양한 프로젝트를 통해 얻은 경험과 학습 내용을 공유합니다.
           </p>
