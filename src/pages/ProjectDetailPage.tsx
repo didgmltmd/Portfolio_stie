@@ -258,11 +258,11 @@ export function ProjectDetail() {
           <Button
             variant="outline"
             size="lg"
-            onClick={() => navigate("/")}
-            className="rounded-xl"
+            onClick={() => navigate("/projects")}
+            className="rounded-xl hover:cursor-pointer"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            프로젝트 목록으로 돌아가기
+              전체 프로젝트 목록보기
           </Button>
         </div>
       </div>

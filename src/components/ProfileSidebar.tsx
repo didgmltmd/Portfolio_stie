@@ -21,9 +21,10 @@ export function ProfileSidebar() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-          성장중인 프론트엔드 개발자로, 
-          사용자 경험을 최우선으로 생각하며 
-          깨끗하고 유지보수 가능한 코드를 작성하고자 노력중입니다.
+          "끊임없는 도전을!" <br />
+          성장 중인 프론트엔드 개발자로서, 매일 새로운 기술과 문제에 도전하며 스스로의 한계를 넓혀가고 있습니다.<br />
+          앞으로도 도전을 멈추지 않는 개발자, <br/>
+          사용자의 경험을 통해 스스로 성장하는 프론트엔드 개발자가 되고자 합니다.
         </p>
 
         <div className="mb-6">
