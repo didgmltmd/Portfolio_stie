@@ -9,6 +9,7 @@ import { Menu } from "lucide-react";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 export function MainPage() {
   const navigate = useNavigate();
@@ -33,6 +34,8 @@ export function MainPage() {
           <ThemeToggle />
         </div>
       </header>
+
+      <Header />
       {/* Main */}
       <main id="projects" className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-6 lg:mb-8 flex flex-col w-full">

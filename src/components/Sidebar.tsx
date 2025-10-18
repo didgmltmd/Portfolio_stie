@@ -11,22 +11,18 @@ export function Sidebar() {
   };
 
   return (
-    <aside className="w-80 h-screen sticky top-0 bg-card border-r border-border flex flex-col p-8">
+    <aside className="w-80 h-screen sticky top-0 bg-card border-r border-border flex flex-col p-8 justify-between">
       {/* Profile Section */}
       <div className="mb-2">
         <div className="w-60 h-50 rounded-2xl  from-primary to-primary/60 mb-6 flex items-center justify-center">
           <img src={profile_img} className="ml-5 w-50 h-55 rounded-4xl"/>
         </div>
         
-        <h2 className="mb-2">프론트엔드 개발자<br /><b>양희승</b></h2>
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          사용자 경험을 최우선으로<br />
-          생각하는 개발자입니다
-        </p>
+        {/* <h2 className="mb-2">프론트엔드 개발자<br /><b>양희승</b></h2> */}
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 space-y-1">
+      <nav className="space-y-1">
         <button
           onClick={() => scrollToSection("projects")}
           className="w-full text-left px-4 py-3 rounded-xl hover:bg-primary/10 text-foreground hover:text-primary transition-colors hover:cursor-pointer"

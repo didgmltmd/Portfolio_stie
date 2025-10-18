@@ -21,11 +21,11 @@ export function ProfileSidebar() {
           </div>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-          "끊임없는 도전을!" <br />
-          성장 중인 프론트엔드 개발자로서, 매일 새로운 기술과 문제에 도전하며 스스로의 한계를 넓혀가고 있습니다.<br />
-          앞으로도 도전을 멈추지 않는 개발자, <br/>
-          사용자의 경험을 통해 스스로 성장하는 프론트엔드 개발자가 되고자 합니다.
+          "도전이 없으면 성취도 없다" <br /> <span className="font-light flex justify-end mt-2 mr-5">-벤자민 프랭클린</span>
         </p>
+                  {/* 성장 중인 프론트엔드 개발자로서, 매일 새로운 기술과 문제에 도전하며 스스로의 한계를 넓혀가고 있습니다.<br />
+          앞으로도 도전을 멈추지 않는 개발자, <br/>
+          사용자의 경험을 통해 스스로 성장하는 프론트엔드 개발자가 되고자 합니다. */}
 
         <div className="mb-6">
           <h4 className="mb-3 text-sm">보유 기술</h4>
