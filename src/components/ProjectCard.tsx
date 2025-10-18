@@ -60,7 +60,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             className="flex gap-3"
             onClick={(e) => e.stopPropagation()} // 카드 클릭 방지
           >
-            {project.demoUrl && (
+            {(project.demoUrl && project.demoUrl != "#") && (
               <Button variant="outline" size="sm" className="flex-1 rounded-xl" asChild>
                 <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
@@ -68,6 +68,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 </a>
               </Button>
             )}
+
+
             {project.githubUrl && (
               <Button variant="outline" size="sm" className="flex-1 rounded-xl" asChild>
                 <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">

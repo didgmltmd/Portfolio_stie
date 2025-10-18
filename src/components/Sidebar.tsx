@@ -48,7 +48,7 @@ export function Sidebar() {
           <span className="text-primary">4+</span>
         </div>
         <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">경력</span>
+          <span className="text-sm text-muted-foreground">학년</span>
           <span className="text-primary">2학년(대학생)</span>
         </div>
         <div className="flex items-center justify-between">
