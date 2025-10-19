@@ -1,5 +1,5 @@
 import { useMemo, useState,useOptimistic,startTransition } from "react";
-import type { BlogPost, BlogCategory } from "../data/blogs";
+import type {  BlogCategory } from "../data/blogs";
 import { BlogCard } from "../components/BlogCard";
 import { blogPosts } from "../data/blogs";
 import { ChevronLeft, X } from "lucide-react";
