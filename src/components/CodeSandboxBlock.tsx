@@ -171,9 +171,8 @@ export default function CodeSandboxBlock({
             <div id="root" style="font-family: ui-sans-serif, system-ui"></div>
             <pre id="console" style="color:#9fe;padding:12px;border-radius:8px;overflow:auto;max-height:40vh;"></pre>
 
-            <!-- ✅ 로컬 UMD 파일 로드 (umd-react 패키지에서 가져옴) -->
-            <script src="/node_modules/umd-react/dist/react.production.min.js"></script>
-            <script src="/node_modules/umd-react/dist/react-dom.production.min.js"></script>
+            <script src="/vendor/react.production.min.js"></script>
+            <script src="/vendor/react-dom.production.min.js"></script>
 
             <script>(function(){
             ${makeConsoleHeader}
