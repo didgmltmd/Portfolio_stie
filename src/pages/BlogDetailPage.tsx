@@ -4,7 +4,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
-import { useState, useEffect, type ReactElement } from "react";
+import { type ReactElement } from "react";
 import { ThemeToggle } from "../components/ThemeToggle";
 import CodeSandboxBlock from "../components/CodeSandboxBlock";
 import * as React from "react";
