@@ -166,14 +166,19 @@ export function ProjectDetail() {
                       )}
                     </div>
                   </div>
-                  {(feature.relatedBlogId && feature.relatedBlogId !== "#") && (
+                  {feature.relatedBlogId !== "#" ? 
                     <Link to={`/blog/${feature.relatedBlogId}`}>
-                      <Button variant="ghost" size="sm" className="gap-2 rounded-xl flex-shrink-0">
+                      <Button variant="ghost" size="sm" className="gap-2 rounded-xl flex-shrink-0 hover:cursor-pointer">
                         <BookOpen className="w-4 h-4" />
                         관련 글
                       </Button>
                     </Link>
-                  )}
+                    :
+                    <Button variant="ghost" size="sm" className="gap-2 rounded-xl ">
+                        <BookOpen className="w-4 h-4" />
+                        작성중입니다..
+                    </Button>
+                  }
                 </div>
               </div>
             ))}
@@ -246,7 +251,7 @@ export function ProjectDetail() {
                   </div>
                   {challenge.relatedBlogId && (
                     <Link to={`/blog/${challenge.relatedBlogId}`}>
-                      <Button variant="outline" size="sm" className="gap-2 rounded-xl flex-shrink-0">
+                      <Button variant="outline" size="sm" className="gap-2 rounded-xl flex-shrink-0 hover:cursor-pointer">
                         <BookOpen className="w-4 h-4" />
                         자세히 보기
                       </Button>

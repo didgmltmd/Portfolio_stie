@@ -262,9 +262,9 @@ export default function CodeSandboxBlock({
       <div className="flex items-center justify-between px-4 py-2 bg-muted/60 border-b">
         <div className="text-xs text-muted-foreground">{language || "text"}</div>
         <div className="flex gap-2">
-          <Button size="sm" variant="outline" onClick={copy}>Copy</Button>
-          <Button size="sm" variant="outline" onClick={reset}>Reset</Button>
-          <Button size="sm" onClick={run} disabled={running}>
+          <Button size="sm" className="hover:cursor-pointer" variant="outline" onClick={copy}>Copy</Button>
+          <Button size="sm" className="hover:cursor-pointer" variant="outline" onClick={reset}>Reset</Button>
+          <Button size="sm" className="hover:cursor-pointer" onClick={run} disabled={running}>
             {running ? "Running..." : "Run"}
           </Button>
         </div>
@@ -278,19 +278,7 @@ export default function CodeSandboxBlock({
         placeholder="Edit code here..."
       />
 
-      <div className="grid md:grid-cols-2 gap-0 border-t">
-        {isJS}
-        <div className={isJS ? "p-0" : "p-0"}>
-          <iframe
-            key={iframeKey}
-            title="sandbox"
-            sandbox="allow-scripts"
-            srcDoc={doc}
-            className={isJS ? "w-0 h-0 absolute opacity-0 pointer-events-none" : "w-full h-[360px] bg-white"}
-            aria-hidden={isJS ? "true" : "false"}
-          />
-        </div>
-
+      <div className="border-t">
         {isJS ? (
           <div className="p-0 w-full">
             <div className="px-4 py-2 text-xs text-muted-foreground bg-muted/40 border-b">
@@ -299,11 +287,14 @@ export default function CodeSandboxBlock({
             <pre className="p-4 text-sm h-[200px] overflow-auto">{logs.join("\n")}</pre>
           </div>
         ) : (
-          <div className="p-0 border-l">
-            <div className="px-4 py-2 text-xs text-muted-foreground bg-muted/40 border-b">
-              Console
-            </div>
-            <pre className="p-4 text-sm h-[200px] overflow-auto">{logs.join("\n")}</pre>
+          <div className="p-0 w-full">
+            <iframe
+              key={iframeKey}
+              title="sandbox"
+              sandbox="allow-scripts"
+              srcDoc={doc}
+              className="w-full h-[360px] bg-white"
+            />
           </div>
         )}
       </div>

@@ -130,18 +130,18 @@ export const projects: Project[] = [
     keyFeatures: [
       {
         title:"메뉴 추가/삭제/수정",
-        description:"#",
-        relatedBlogId:"#"
+        description:"axios통신과 Modal로서 메뉴 추가 / 삭제 / 수정을 구현했습니다.",
+        relatedBlogId:"festival_01"
       },
       {
         title:"주문서 작성",
-        description:"#",
-        relatedBlogId:"#"
+        description:"axios통신과 Modal을 활용하여 주문서 작성을 구현했습니다.",
+        relatedBlogId:"festival_02"
       },
       {
         title:"주문내역 확인",
-        description:"#",
-        relatedBlogId:"#"
+        description:"테이블·시간 필터와 커스텀 모달로 주문 검색/삭제를 구현했습니다.",
+        relatedBlogId:"festival_03"
       },
       {
         title:"매출확인",
@@ -155,11 +155,6 @@ export const projects: Project[] = [
       },
       {
         title:"서빙완료시 조리구역에 실시간 전송",
-        description:"#",
-        relatedBlogId:"#"
-      },
-      {
-        title:"주문시 실시간 술제공 목록 추가",
         description:"#",
         relatedBlogId:"#"
       },
@@ -186,7 +181,22 @@ export const projects: Project[] = [
         "주문 기록을 DB에 영속화하여 주문 이력/통계 제공 기능 추가",
       ],
     },
-    challenges:[],
+    challenges:[{
+    title: "현장 피드백 기반 실시간 UI 개선",
+    problem:
+      "조리 구역에서 새 주문이 아래로 쌓여 시인성이 떨어지고, 운영 효율이 낮아졌습니다.",
+    solution:
+      "주문 데이터를 출력할 때 reverse() 함수를 적용해 최신 주문이 상단에 표시되도록 수정했습니다. 이를 통해 조리 담당자가 새 주문을 바로 확인할 수 있게 되었고, 혼선이 줄었습니다.",
+    relatedBlogId: "festival_order_issue",
+  },
+  {
+    title: "외부인/재학생 가격 분리 로직 추가",
+    problem:
+      "현장에서 재학생과 외부인의 메뉴 가격을 구분해야 한다는 요청이 발생했습니다.",
+    solution:
+      "주문 데이터 구조에 outsider 필드를 추가하고, 주문서 작성 단계에서 사용자가 외부인 여부를 선택하면 금액이 실시간으로 갱신되도록 개선했습니다. Socket 기반 실시간 반영으로 UX를 해치지 않고 유연하게 처리했습니다.",
+    relatedBlogId: "festival_order_issue",
+  },],
     outcome: "3명의 축제도우미 인원 감축 및 카운터와 조리구역간의 협업 능력향상하여 축제부스 운영에 기여하였습니다.",
     screenshots:["/assets/festival/1.png","/assets/festival/2.png","/assets/festival/3.png","/assets/festival/4.png","/assets/festival/5.png","/assets/festival/6.png"]
   },
@@ -306,8 +316,8 @@ export const projects: Project[] = [
     keyFeatures: [
       {
         title:"KakaoMap을 통한 실시간 위치 표시 및 경로 시각화",
-        description:"#",
-        relatedBlogId:"#"
+        description:"KakaoMap API의 Map,과 Mapmarker를 활용하여 구현했습니다.",
+        relatedBlogId:"feature-kakaomap-realtime"
       },
       {
         title: "OpenRouteService API를 이용한 안전 경로 및 일반 경로 탐색",

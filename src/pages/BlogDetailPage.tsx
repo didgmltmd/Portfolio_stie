@@ -203,7 +203,7 @@ export function BlogDetail() {
           <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
             {/* 목차 */}
             <aside className="hidden lg:block w-64 flex-shrink-0">
-              <div className="sticky top-24">
+              {/* <div className="sticky top-24">
                 <div className="mb-4 text-sm text-muted-foreground">목차</div>
                 <nav className="space-y-2">
                   {headings.map((h) => (
@@ -218,7 +218,7 @@ export function BlogDetail() {
                     </a>
                   ))}
                 </nav>
-              </div>
+              </div> */}
             </aside>
 
             {/* 본문 */}
