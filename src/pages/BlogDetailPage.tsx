@@ -24,26 +24,26 @@ export function BlogDetail() {
   const navigate = useNavigate();
   const post = blogPosts.find((p) => p.id === id);
 
-  const [headings, setHeadings] = useState<
-    { id: string; text: string; level: number }[]
-  >([]);
+  // const [headings, setHeadings] = useState<
+  //   { id: string; text: string; level: number }[]
+  // >([]);
 
   /** 목차 추출: 본문 렌더와 동일한 slug 규칙 사용 */
-  useEffect(() => {
-    if (!post) return;
-    const lines = post.content.split("\n");
-    const extracted = lines
-      .map((line) => {
-        const m = line.match(/^(#{1,6})\s+(.*)$/);
-        if (!m) return null;
-        const level = m[1].length;
-        const text = m[2].trim();
-        const id = slugify(text);
-        return { id, text, level };
-      })
-      .filter(Boolean) as { id: string; text: string; level: number }[];
-    setHeadings(extracted);
-  }, [post]);
+  // useEffect(() => {
+  //   if (!post) return;
+  //   const lines = post.content.split("\n");
+  //   const extracted = lines
+  //     .map((line) => {
+  //       const m = line.match(/^(#{1,6})\s+(.*)$/);
+  //       if (!m) return null;
+  //       const level = m[1].length;
+  //       const text = m[2].trim();
+  //       const id = slugify(text);
+  //       return { id, text, level };
+  //     })
+  //     .filter(Boolean) as { id: string; text: string; level: number }[];
+  //   setHeadings(extracted);
+  // }, [post]);
 
   if (!post) {
     return (
