@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState,useOptimistic,startTransition } from "react";
 import { ProjectCard } from "../components/ProjectCard";
 import type { ProjectCategory } from "../data/projects";
 import { projects } from "../data/projects";
@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Badge } from "../ui/badge";
-
 
 const categories: ProjectCategory[] = ["프로젝트","해커톤","토이 프로젝트"];
 
@@ -20,32 +19,41 @@ export function ProjectListPage(){
         projects.forEach(project => {
             project.tags.forEach(tag => tagSet.add(tag));
         });
-
         return Array.from(tagSet).sort();
     },[]);
 
-    const toggleTag = (tag:string) => {
-        setSelectedTags(prev => 
-            prev.includes(tag) ?
-                prev.filter(t => t !== tag)
-                : [...prev, tag]
-        );
+    const [optimisticTags,applyOptimistic] = useOptimistic<string[],string[]>(
+        selectedTags,
+        (_state, newTags) => newTags
+    );
+
+    const handleTagClick = (tag:string) => {
+        const next = optimisticTags.includes(tag)
+            ? optimisticTags.filter(t => t !== tag)
+            : [...optimisticTags,tag];
+
+
+        startTransition(() => {
+            applyOptimistic(next);
+        })
+        
+        setSelectedTags(next);
     }
+
+    const clearAll = () => {
+        startTransition(() => {
+            applyOptimistic([]);
+        });
+        setSelectedTags([]);
+    };
 
 
     const filteredProjects = useMemo(() => {
-        let filtered = selectedCategory === "전체"
-            ? projects
-            : projects.filter(project => project.category === selectedCategory);
-
-        if(selectedTags.length > 0){
-            filtered = filtered.filter(project => 
-                selectedTags.every(tag => project.tags.includes(tag))
-            );
-        }
-
-        return filtered;
-    },[selectedCategory,selectedTags]);
+        if(optimisticTags.length === 0) return projects;
+        return projects.filter(p =>
+            optimisticTags.every(tag => p.tags.includes(tag))
+        )
+    },[optimisticTags]);
 
 
     return(
@@ -104,7 +112,7 @@ export function ProjectListPage(){
                                     <Button
                                         variant="ghost"
                                         size="sm"
-                                        onClick={() => setSelectedTags([])}
+                                        onClick={clearAll}
                                         className="h-auto p-1 text-xs"
                                     >
                                         초기화
@@ -119,7 +127,7 @@ export function ProjectListPage(){
                                             key={tag}
                                             variant={isSelected ? "default" : "outline"}
                                             className="cursor-pointer hover:bg-primary/90 transition-colors"
-                                            onClick={() => toggleTag(tag)}
+                                            onClick={() => handleTagClick(tag)}
                                         >
                                             {tag}
                                             {isSelected && <X className="w-3 h-3 ml-1" />}
@@ -145,7 +153,7 @@ export function ProjectListPage(){
                             <div className="flex items-center gap-2 flex-wrap">
                             <span className="text-sm text-muted-foreground">필터:</span>
                             {selectedTags.map((tag) => (
-                                <Badge key={tag} variant="secondary" className="gap-1 hover:cursor-pointer" onClick={() => toggleTag(tag)}>
+                                <Badge key={tag} variant="secondary" className="gap-1 hover:cursor-pointer" onClick={() => handleTagClick(tag)}>
                                 {tag}
                                 <X
                                     className="w-3 h-3 cursor-pointer"
