@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { projects } from "../data/projects";
-import { ArrowLeft, ExternalLink, Github, Calendar, Users, User, BookOpen, ArrowRight } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Calendar, Users, User, BookOpen } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
