@@ -7,6 +7,7 @@ import { Separator } from "../ui/separator";
 import { useState, useEffect, type ReactElement } from "react";
 import { ThemeToggle } from "../components/ThemeToggle";
 import CodeSandboxBlock from "../components/CodeSandboxBlock";
+import * as React from "react";
 
 /** 헤딩/목차 id 통일을 위한 간단 slugify */
 function slugify(s: string) {
@@ -146,11 +147,15 @@ export function BlogDetail() {
         const level = m[1].length;
         const text = m[2].trim();
         const hid = slugify(text);
-        const Tag = (`h${Math.min(6, Math.max(1, level))}` as unknown) as keyof JSX.IntrinsicElements;
+        const levelClamped = Math.min(6, Math.max(1, level));
+        const Tag = `h${levelClamped}` as keyof React.JSX.IntrinsicElements;
+
         elements.push(
-          <Tag key={index} id={hid} className="mt-8 mb-3 scroll-mt-24">
-            {text}
-          </Tag>
+          React.createElement(
+            Tag,
+            { key: index, id: hid, className: "mt-8 mb-3 scroll-mt-24" },
+            text
+          )
         );
         return;
       }

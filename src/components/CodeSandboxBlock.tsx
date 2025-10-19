@@ -14,14 +14,14 @@ const TSX = new Set(["tsx", "ts"]); // ts도 TSX 트랙으로 처리
 const HTML = new Set(["html", "htm"]);
 const CSS = new Set(["css"]);
 
-const urlRegex = /((https?:\/\/[^\s]+)|(?:www\.[^\s]+))/g;
+// const urlRegex = /((https?:\/\/[^\s]+)|(?:www\.[^\s]+))/g;
 
-function toLinkifiedHTML(raw: string) {
-  return raw.replace(urlRegex, (m) => {
-    const href = m.startsWith("http") ? m : `https://${m}`;
-    return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${m}</a>`;
-  });
-}
+// function toLinkifiedHTML(raw: string) {
+//   return raw.replace(urlRegex, (m) => {
+//     const href = m.startsWith("http") ? m : `https://${m}`;
+//     return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${m}</a>`;
+//   });
+// }
 
 /** Babel 안전 로더: window.Babel → 동적 import → CDN 주입 */
 async function loadBabel(): Promise<any> {
