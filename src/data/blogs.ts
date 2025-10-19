@@ -38,26 +38,33 @@ Concurrent Rendering은 React가 여러 버전의 UI를 동시에 준비할 수 
 ## useTransition 활용하기
 
 \`\`\`tsx
-import { useState, useTransition } from 'react';
+// --- 샌드박스 스텁(없으면 ReferenceError) ---
+function Spinner(){ return <div>Loading...</div>; }
+function ResultsList({results}:{results:any[]}) {
+  return <ul>{results.map((x,i)=><li key={i}>{String(x)}</li>)}</ul>;
+}
+function searchData(q:string){
+  const data = ["apple","banana","cherry","avocado","grape"];
+  return q ? data.filter(x=>x.toLowerCase().includes(q.toLowerCase())) : [];
+}
+// ---------------------------------------------
 
-function SearchResults() {
-  const [isPending, startTransition] = useTransition();
-  const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
+export default function SearchResults() {
+  const [isPending, startTransition] = React.useTransition();
+  const [query, setQuery] = React.useState("");
+  const [results, setResults] = React.useState<string[]>([]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setQuery(value); // 긴급한 업데이트
-    
+    setQuery(value); // 긴급 업데이트
     startTransition(() => {
-      // 긴급하지 않은 업데이트
-      setResults(searchData(value));
+      setResults(searchData(value)); // 비긴급 업데이트
     });
   };
 
   return (
-    <div>
-      <input value={query} onChange={handleSearch} />
+    <div style={{padding:12}}>
+      <input value={query} onChange={handleSearch} placeholder="검색..." />
       {isPending && <Spinner />}
       <ResultsList results={results} />
     </div>
@@ -322,14 +329,87 @@ function App() {
     content: "웹 접근성 구현 가이드...",
   },
   {
-    id: "modern-testing-jest-rtl",
-    title: "모던 프론트엔드 테스팅: Jest와 Testing Library",
-    excerpt: "Jest와 React Testing Library를 활용한 효과적인 테스트 작성 방법과 TDD 개발 프로세스를 실제 예제와 함께 설명합니다.",
-    date: "2024년 7월 18일",
-    readTime: "11분",
-    category: "Testing",
-    tags: ["Jest", "React Testing Library", "TDD", "Testing"],
-    series: "테스팅 마스터하기",
-    content: "프론트엔드 테스팅 완벽 가이드...",
-  },
+    id: "boj-1316",
+    title: "BOJ 1316 - 그룹 단어 체커",
+    excerpt:
+      "문자열을 배열화하고 이중 반복문을 통해 연속되는 문자를 판별하는 방법을 학습한 문제. 처음 시도에서 정답을 맞출 수 있었다.",
+    date: "2025-10-19",
+    readTime: "4 min",
+    category: "Algorithm",
+    tags: ["Baekjoon", "JavaScript", "String", "Loop", "Algorithm"],
+    content: `
+  [문제 링크] https://www.acmicpc.net/problem/1316
+
+  이 문제는 문자열을 배열화하는 법에 대해 공부할 수 있었던 문제였다. 
+  그리고 이중배열을 다루는 연습을 통해 배열 중첩 구조를 다루는 능숙함을 얻을 수 있었다.
+
+  ---
+
+  ### 🧩 문제 요약
+  '그룹 단어'란, 한 단어 내의 모든 문자가 연속해서 나타나는 경우만을 의미한다.  
+  예를 들어 **ccazzzzbb**는 c, a, z, b가 각각 연속해서 나타나므로 그룹 단어이다.  
+  반면 **aabbbccb**처럼 중간에 다른 문자가 끼면 그룹 단어가 아니다.
+
+  ---
+
+  ### 💡 나의 풀이 접근
+  문자열을 **문자 배열로 변환**하여 이중 반복문으로 검사하였다.
+
+  예를 들어 "happy"가 주어졌을 때  
+  이를 ['h', 'a', 'p', 'p', 'y']로 변환한 후,  
+  각 문자 i에 대해 j를 순회하며 같은 문자가 연속되는지를 체크했다.
+
+  ---
+
+  ### 🔍 핵심 로직
+  1. 각 단어를 문자 배열로 변환  
+  2. 이중 반복문을 통해 문자의 연속 여부 검사  
+  3. 중간에 다른 문자가 낀 후 다시 같은 문자가 등장하면 그룹 단어 아님 표시  
+  4. 모든 검사를 통과하면 결과값(result)에 +1
+
+  ---
+
+  ### 💻 코드
+  \`\`\`js
+  const fs = require('fs');
+  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\\n");
+
+  // 입력값 배열화
+  let words = [];
+  for (let i = 0; i < input.length; i++) {
+    words.push(input[i].trim());
+  }
+
+  let result = 0;
+
+  for (let i = 1; i < words.length; i++) {
+    let check = [...words[i]];
+    let linked = true;
+
+    for (let j = 0; j < check.length; j++) {
+      let same = true;
+      for (let k = j + 1; k < check.length; k++) {
+        if (check[j] !== check[k]) same = false;
+        if (!same && check[j] === check[k]) linked = false;
+      }
+    }
+
+    if (linked) result++;
+  }
+
+  console.log(result);
+  \`\`\`
+
+  ---
+
+  ### ✏️ 회고
+  이 문제를 처음 봤을 때, “문자 배열화 + 이중 반복문”으로 풀면 될 것 같다고 생각했다.  
+  직관적인 접근이었지만, 실제로 구현하며 **문자 비교 로직**과  
+  **불리언 플래그 전환 타이밍**의 중요성을 다시 한번 느꼈다.
+
+  한 번에 정답을 맞추긴 했지만,  
+  코드 복잡도를 줄이기 위해 이후에는 **Set과 이전 문자 비교 방식**으로 리팩토링할 수도 있겠다고 느꼈다.
+    `,
+    series: "Baekjoon Study Log"
+  }
 ];

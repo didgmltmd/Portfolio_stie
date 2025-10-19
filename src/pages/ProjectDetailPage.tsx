@@ -166,7 +166,7 @@ export function ProjectDetail() {
                       )}
                     </div>
                   </div>
-                  {feature.relatedBlogId && (
+                  {(feature.relatedBlogId && feature.relatedBlogId !== "#") && (
                     <Link to={`/blog/${feature.relatedBlogId}`}>
                       <Button variant="ghost" size="sm" className="gap-2 rounded-xl flex-shrink-0">
                         <BookOpen className="w-4 h-4" />
