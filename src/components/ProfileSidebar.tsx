@@ -41,10 +41,10 @@ export function ProfileSidebar() {
         <div className="pt-4 border-t border-border">
           <h4 className="mb-3 text-sm">관심 분야</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>• 웹 접근성 (a11y)</li>
+            <li>• TypeScript</li>
             <li>• 성능 최적화</li>
             <li>• UI/UX 디자인</li>
-            <li>• 디자인 시스템</li>
+            <li>• node.js</li>
           </ul>
         </div>
       </div>

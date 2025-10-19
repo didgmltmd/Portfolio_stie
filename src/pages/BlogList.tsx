@@ -10,7 +10,7 @@ import { Badge } from "../ui/badge";
 
 const categories: ProjectCategory[] = ["프로젝트","해커톤","토이 프로젝트"];
 
-export function ProjectListPage(){
+export function BlogList(){
     const [selectedCategory, setSelectedCategory] = useState<ProjectCategory | "전체">("전체");
     const [selectedTags,setSelectedTags ] = useState<string[]>([]);
 
@@ -49,16 +49,11 @@ export function ProjectListPage(){
 
 
     const filteredProjects = useMemo(() => {
-        let filtered = selectedCategory === "전체"
-            ? projects
-        : projects.filter(project => project.category === selectedCategory);
-
-        if(optimisticTags.length === 0) return filtered;
-
-        return filtered.filter(project =>
-            optimisticTags.every(tag => project.tags.includes(tag))
+        if(optimisticTags.length === 0) return projects;
+        return projects.filter(p =>
+            optimisticTags.every(tag => p.tags.includes(tag))
         )
-    },[selectedCategory,optimisticTags]);
+    },[optimisticTags]);
 
 
     return(

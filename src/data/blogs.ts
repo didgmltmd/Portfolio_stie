@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     id: "react-18-concurrent",
     title: "React 18의 새로운 기능과 Concurrent Rendering 이해하기",
     excerpt: "React 18에서 도입된 Concurrent Rendering의 개념과 실제 프로젝트에 적용한 경험을 공유합니다. useTransition과 useDeferredValue의 활용 사례를 소개합니다.",
-    date: "2025년 10월 15일",
+    date: "2024년 10월 1일",
     readTime: "8분",
     category: "React",
     tags: ["React", "React 18", "Concurrent Rendering", "Performance"],
@@ -112,224 +112,224 @@ React 18의 Concurrent Rendering은 사용자 경험을 크게 개선할 수 있
 다음 글에서는 Suspense와 함께 사용하는 방법에 대해 알아보겠습니다.
     `,
   },
-//   {
-//     id: "typescript-advanced-types",
-//     title: "TypeScript 고급 타입 시스템 활용하기",
-//     excerpt: "제네릭, 유틸리티 타입, 조건부 타입 등 TypeScript의 고급 기능을 활용하여 더 안전하고 유지보수 가능한 코드를 작성하는 방법을 알아봅니다.",
-//     date: "2024년 9월 15일",
-//     readTime: "10분",
-//     category: "TypeScript",
-//     tags: ["TypeScript", "Generic", "Utility Types", "Advanced"],
-//     content: `
-// # TypeScript 고급 타입 시스템 활용하기
+  {
+    id: "typescript-advanced-types",
+    title: "TypeScript 고급 타입 시스템 활용하기",
+    excerpt: "제네릭, 유틸리티 타입, 조건부 타입 등 TypeScript의 고급 기능을 활용하여 더 안전하고 유지보수 가능한 코드를 작성하는 방법을 알아봅니다.",
+    date: "2024년 9월 15일",
+    readTime: "10분",
+    category: "TypeScript",
+    tags: ["TypeScript", "Generic", "Utility Types", "Advanced"],
+    content: `
+# TypeScript 고급 타입 시스템 활용하기
 
-// TypeScript의 타입 시스템을 깊이 이해하고 활용하면, 런타임 에러를 컴파일 타임에 잡아내고 더 안전한 코드를 작성할 수 있습니다.
+TypeScript의 타입 시스템을 깊이 이해하고 활용하면, 런타임 에러를 컴파일 타임에 잡아내고 더 안전한 코드를 작성할 수 있습니다.
 
-// ## 제네릭의 심화 활용
+## 제네릭의 심화 활용
 
-// 제네릭은 재사용 가능한 컴포넌트를 만드는 핵심 도구입니다.
+제네릭은 재사용 가능한 컴포넌트를 만드는 핵심 도구입니다.
 
-// \`\`\`typescript
-// // 기본 제네릭
-// function identity<T>(arg: T): T {
-//   return arg;
-// }
+\`\`\`typescript
+// 기본 제네릭
+function identity<T>(arg: T): T {
+  return arg;
+}
 
-// // 제약 조건이 있는 제네릭
-// interface Lengthwise {
-//   length: number;
-// }
+// 제약 조건이 있는 제네릭
+interface Lengthwise {
+  length: number;
+}
 
-// function logLength<T extends Lengthwise>(arg: T): T {
-//   console.log(arg.length);
-//   return arg;
-// }
+function logLength<T extends Lengthwise>(arg: T): T {
+  console.log(arg.length);
+  return arg;
+}
 
-// // 여러 타입 매개변수
-// function merge<T, U>(obj1: T, obj2: U): T & U {
-//   return { ...obj1, ...obj2 };
-// }
-// \`\`\`
+// 여러 타입 매개변수
+function merge<T, U>(obj1: T, obj2: U): T & U {
+  return { ...obj1, ...obj2 };
+}
+\`\`\`
 
-// ## 유틸리티 타입 마스터하기
+## 유틸리티 타입 마스터하기
 
-// TypeScript는 강력한 유틸리티 타입을 제공합니다.
+TypeScript는 강력한 유틸리티 타입을 제공합니다.
 
-// \`\`\`typescript
-// // Partial - 모든 속성을 선택적으로
-// type User = {
-//   name: string;
-//   email: string;
-//   age: number;
-// };
+\`\`\`typescript
+// Partial - 모든 속성을 선택적으로
+type User = {
+  name: string;
+  email: string;
+  age: number;
+};
 
-// type PartialUser = Partial<User>;
+type PartialUser = Partial<User>;
 
-// // Pick - 특정 속성만 선택
-// type UserPreview = Pick<User, 'name' | 'email'>;
+// Pick - 특정 속성만 선택
+type UserPreview = Pick<User, 'name' | 'email'>;
 
-// // Omit - 특정 속성 제외
-// type UserWithoutAge = Omit<User, 'age'>;
+// Omit - 특정 속성 제외
+type UserWithoutAge = Omit<User, 'age'>;
 
-// // Record - 키-값 타입 정의
-// type Roles = 'admin' | 'user' | 'guest';
-// type RolePermissions = Record<Roles, string[]>;
-// \`\`\`
+// Record - 키-값 타입 정의
+type Roles = 'admin' | 'user' | 'guest';
+type RolePermissions = Record<Roles, string[]>;
+\`\`\`
 
-// ## 조건부 타입
+## 조건부 타입
 
-// 조건부 타입은 타입의 흐름을 제어할 수 있게 해줍니다.
+조건부 타입은 타입의 흐름을 제어할 수 있게 해줍니다.
 
-// \`\`\`typescript
-// type NonNullable<T> = T extends null | undefined ? never : T;
+\`\`\`typescript
+type NonNullable<T> = T extends null | undefined ? never : T;
 
-// type IsString<T> = T extends string ? true : false;
+type IsString<T> = T extends string ? true : false;
 
-// // 실용적인 예시
-// type APIResponse<T> = T extends { data: infer D }
-//   ? D
-//   : never;
+// 실용적인 예시
+type APIResponse<T> = T extends { data: infer D }
+  ? D
+  : never;
 
-// type UserResponse = { data: User; status: number };
-// type UserData = APIResponse<UserResponse>; // User
-// \`\`\`
+type UserResponse = { data: User; status: number };
+type UserData = APIResponse<UserResponse>; // User
+\`\`\`
 
-// ## 실전 활용 예시
+## 실전 활용 예시
 
-// 실제 프로젝트에서 사용한 타입 안전한 API 클라이언트:
+실제 프로젝트에서 사용한 타입 안전한 API 클라이언트:
 
-// \`\`\`typescript
-// type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+\`\`\`typescript
+type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-// interface APIEndpoint<TResponse, TRequest = void> {
-//   method: HTTPMethod;
-//   url: string;
-//   transform?: (data: unknown) => TResponse;
-// }
+interface APIEndpoint<TResponse, TRequest = void> {
+  method: HTTPMethod;
+  url: string;
+  transform?: (data: unknown) => TResponse;
+}
 
-// class APIClient {
-//   async request<TResponse, TRequest = void>(
-//     endpoint: APIEndpoint<TResponse, TRequest>,
-//     data?: TRequest
-//   ): Promise<TResponse> {
-//     const response = await fetch(endpoint.url, {
-//       method: endpoint.method,
-//       body: data ? JSON.stringify(data) : undefined,
-//     });
+class APIClient {
+  async request<TResponse, TRequest = void>(
+    endpoint: APIEndpoint<TResponse, TRequest>,
+    data?: TRequest
+  ): Promise<TResponse> {
+    const response = await fetch(endpoint.url, {
+      method: endpoint.method,
+      body: data ? JSON.stringify(data) : undefined,
+    });
     
-//     const json = await response.json();
-//     return endpoint.transform ? endpoint.transform(json) : json;
-//   }
-// }
+    const json = await response.json();
+    return endpoint.transform ? endpoint.transform(json) : json;
+  }
+}
 
-// // 사용 예시
-// const getUser: APIEndpoint<User> = {
-//   method: 'GET',
-//   url: '/api/user',
-// };
+// 사용 예시
+const getUser: APIEndpoint<User> = {
+  method: 'GET',
+  url: '/api/user',
+};
 
-// const client = new APIClient();
-// const user = await client.request(getUser); // User 타입
-// \`\`\`
+const client = new APIClient();
+const user = await client.request(getUser); // User 타입
+\`\`\`
 
-// ## 마무리
+## 마무리
 
-// TypeScript의 고급 타입 기능을 잘 활용하면 런타임 에러를 크게 줄이고 개발자 경험을 향상시킬 수 있습니다.
-//     `,
-//   },
-//   {
-//     id: "web-performance-optimization",
-//     title: "성능 최적화: 웹 애플리케이션 로딩 속도 50% 개선하기",
-//     excerpt: "Code Splitting, Lazy Loading, 이미지 최적화 등 다양한 기법을 통해 실제 프로젝트의 성능을 대폭 개선한 경험을 공유합니다.",
-//     date: "2024년 9월 1일",
-//     readTime: "12분",
-//     category: "Performance",
-//     tags: ["Performance", "Optimization", "Web Vitals", "React"],
-//     series: "웹 성능 최적화 시리즈",
-//     content: `
-// # 성능 최적화: 웹 애플리케이션 로딩 속도 50% 개선하기
+TypeScript의 고급 타입 기능을 잘 활용하면 런타임 에러를 크게 줄이고 개발자 경험을 향상시킬 수 있습니다.
+    `,
+  },
+  {
+    id: "web-performance-optimization",
+    title: "성능 최적화: 웹 애플리케이션 로딩 속도 50% 개선하기",
+    excerpt: "Code Splitting, Lazy Loading, 이미지 최적화 등 다양한 기법을 통해 실제 프로젝트의 성능을 대폭 개선한 경험을 공유합니다.",
+    date: "2024년 9월 1일",
+    readTime: "12분",
+    category: "Performance",
+    tags: ["Performance", "Optimization", "Web Vitals", "React"],
+    series: "웹 성능 최적화 시리즈",
+    content: `
+# 성능 최적화: 웹 애플리케이션 로딩 속도 50% 개선하기
 
-// 웹 성능은 사용자 경험과 직결됩니다. 이 글에서는 실제 프로젝트에서 적용한 최적화 기법들을 소개합니다.
+웹 성능은 사용자 경험과 직결됩니다. 이 글에서는 실제 프로젝트에서 적용한 최적화 기법들을 소개합니다.
 
-// ## 1. Code Splitting으로 초기 로딩 개선
+## 1. Code Splitting으로 초기 로딩 개선
 
-// \`\`\`tsx
-// // Before
-// import Dashboard from './Dashboard';
-// import Settings from './Settings';
+\`\`\`tsx
+// Before
+import Dashboard from './Dashboard';
+import Settings from './Settings';
 
-// // After
-// const Dashboard = lazy(() => import('./Dashboard'));
-// const Settings = lazy(() => import('./Settings'));
+// After
+const Dashboard = lazy(() => import('./Dashboard'));
+const Settings = lazy(() => import('./Settings'));
 
-// function App() {
-//   return (
-//     <Suspense fallback={<Loading />}>
-//       <Routes>
-//         <Route path="/dashboard" element={<Dashboard />} />
-//         <Route path="/settings" element={<Settings />} />
-//       </Routes>
-//     </Suspense>
-//   );
-// }
-// \`\`\`
+function App() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
+    </Suspense>
+  );
+}
+\`\`\`
 
-// 결과: 초기 번들 크기 450KB → 180KB (60% 감소)
+결과: 초기 번들 크기 450KB → 180KB (60% 감소)
 
-// ## 2. 이미지 최적화
+## 2. 이미지 최적화
 
-// - WebP 포맷 사용
-// - Lazy Loading 적용
-// - 적절한 이미지 크기 제공
+- WebP 포맷 사용
+- Lazy Loading 적용
+- 적절한 이미지 크기 제공
 
-// \`\`\`tsx
-// <img
-//   src="image.webp"
-//   loading="lazy"
-//   srcSet="image-320w.webp 320w, image-640w.webp 640w"
-//   sizes="(max-width: 320px) 280px, 640px"
-//   alt="Description"
-// />
-// \`\`\`
+\`\`\`tsx
+<img
+  src="image.webp"
+  loading="lazy"
+  srcSet="image-320w.webp 320w, image-640w.webp 640w"
+  sizes="(max-width: 320px) 280px, 640px"
+  alt="Description"
+/>
+\`\`\`
 
-// ## 3. 성능 측정 결과
+## 3. 성능 측정 결과
 
-// - LCP: 3.2s → 1.4s
-// - FID: 180ms → 45ms
-// - CLS: 0.15 → 0.02
+- LCP: 3.2s → 1.4s
+- FID: 180ms → 45ms
+- CLS: 0.15 → 0.02
 
-// 모든 Core Web Vitals가 "Good" 범위로 개선되었습니다.
-//     `,
-//   },
-//   {
-//     id: "tailwind-design-system",
-//     title: "Tailwind CSS로 일관성 있는 디자인 시스템 구축하기",
-//     excerpt: "Tailwind CSS의 커스터마이징 기능을 활용하여 프로젝트에 맞는 디자인 시스템을 구축하고 관리하는 방법을 소개합니다.",
-//     date: "2024년 8월 20일",
-//     readTime: "7분",
-//     category: "CSS",
-//     tags: ["Tailwind CSS", "Design System", "CSS", "UI/UX"],
-//     content: "Tailwind CSS 디자인 시스템 구축 가이드...",
-//   },
-//   {
-//     id: "web-accessibility-guide",
-//     title: "접근성(a11y)을 고려한 웹 개발 가이드",
-//     excerpt: "모든 사용자가 웹사이트를 사용할 수 있도록 접근성을 고려한 개발 방법과 테스트 도구를 소개합니다. WCAG 가이드라인을 따르는 실용적인 팁을 공유합니다.",
-//     date: "2024년 8월 5일",
-//     readTime: "9분",
-//     category: "Accessibility",
-//     tags: ["Accessibility", "a11y", "WCAG", "Inclusive Design"],
-//     content: "웹 접근성 구현 가이드...",
-//   },
-//   {
-//     id: "modern-testing-jest-rtl",
-//     title: "모던 프론트엔드 테스팅: Jest와 Testing Library",
-//     excerpt: "Jest와 React Testing Library를 활용한 효과적인 테스트 작성 방법과 TDD 개발 프로세스를 실제 예제와 함께 설명합니다.",
-//     date: "2024년 7월 18일",
-//     readTime: "11분",
-//     category: "Testing",
-//     tags: ["Jest", "React Testing Library", "TDD", "Testing"],
-//     series: "테스팅 마스터하기",
-//     content: "프론트엔드 테스팅 완벽 가이드...",
-//   },
+모든 Core Web Vitals가 "Good" 범위로 개선되었습니다.
+    `,
+  },
+  {
+    id: "tailwind-design-system",
+    title: "Tailwind CSS로 일관성 있는 디자인 시스템 구축하기",
+    excerpt: "Tailwind CSS의 커스터마이징 기능을 활용하여 프로젝트에 맞는 디자인 시스템을 구축하고 관리하는 방법을 소개합니다.",
+    date: "2024년 8월 20일",
+    readTime: "7분",
+    category: "CSS",
+    tags: ["Tailwind CSS", "Design System", "CSS", "UI/UX"],
+    content: "Tailwind CSS 디자인 시스템 구축 가이드...",
+  },
+  {
+    id: "web-accessibility-guide",
+    title: "접근성(a11y)을 고려한 웹 개발 가이드",
+    excerpt: "모든 사용자가 웹사이트를 사용할 수 있도록 접근성을 고려한 개발 방법과 테스트 도구를 소개합니다. WCAG 가이드라인을 따르는 실용적인 팁을 공유합니다.",
+    date: "2024년 8월 5일",
+    readTime: "9분",
+    category: "Accessibility",
+    tags: ["Accessibility", "a11y", "WCAG", "Inclusive Design"],
+    content: "웹 접근성 구현 가이드...",
+  },
+  {
+    id: "modern-testing-jest-rtl",
+    title: "모던 프론트엔드 테스팅: Jest와 Testing Library",
+    excerpt: "Jest와 React Testing Library를 활용한 효과적인 테스트 작성 방법과 TDD 개발 프로세스를 실제 예제와 함께 설명합니다.",
+    date: "2024년 7월 18일",
+    readTime: "11분",
+    category: "Testing",
+    tags: ["Jest", "React Testing Library", "TDD", "Testing"],
+    series: "테스팅 마스터하기",
+    content: "프론트엔드 테스팅 완벽 가이드...",
+  },
 ];

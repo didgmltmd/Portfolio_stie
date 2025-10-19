@@ -1,5 +1,18 @@
 export type ProjectCategory  = "프로젝트" | "해커톤" | "토이 프로젝트";
 
+
+export interface Challenge {
+  title:string;
+  problem:string;
+  solution:string;
+  relatedBlogId?:string;
+}
+
+export interface KeyFeature{
+  title:string;
+  description?:string;
+  relatedBlogId?:string;
+}
 export interface Project {
   id: string;
   primary: boolean;
@@ -15,7 +28,7 @@ export interface Project {
   period: string;
   team: string;
   role: string;
-  keyFeatures: string[];
+  keyFeatures: KeyFeature[];
   techStack: {
     frontend: string[];
     backend?: string[];
@@ -26,13 +39,14 @@ export interface Project {
     problem: string[];
     try: string[];
   };
-  challenges: string;
+  challenges: Challenge[] | [];
   outcome: string;
+  screenshots:string[];
 }
 
 export const projects: Project[] = [
   {
-    id: "ecommerce",
+    id: "ScanAndGo",
     primary: false,
     title: "스마트 쇼핑 어플(Scan and Go)",
     description: "React-native와 TypeScript로 구축한 스마트 쇼핑 애플리케이션",
@@ -47,12 +61,36 @@ export const projects: Project[] = [
     team: "프론트엔드 1명, 백엔드 4명",
     role: "프론트엔드 개발 및 PM",
     keyFeatures: [
-      "바코드 스캔",
-      "상품 조회",
-      "장바구니 담기 / 확인",
-      "예상 금액 설정 / 시각화",
-      "결제 / 영수증 발행 / 조회",
-      "게이트 연동"
+      {
+        title:"바코드 스캔",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"상품 조회",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"장바구니 담기 / 확인",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"예상 금액 설정 / 시각화",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"결제 / 영수증 발행 / 조회",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"게이트 연동",
+        description:"#",
+        relatedBlogId:"#"
+      },
     ],
     techStack: {
       frontend: ["React-native", "TypeScript", "Tailwind CSS"],
@@ -70,8 +108,9 @@ export const projects: Project[] = [
 
       ],
     },
-    challenges: "도전중입니다.",
+    challenges: [],
     outcome: "도전중입니다.",
+    screenshots:[]
   },
   {
     id: "festival-app",
@@ -89,13 +128,41 @@ export const projects: Project[] = [
     team: "개인 프로젝트",
     role: "풀스택 개발",
     keyFeatures: [
-      "메뉴 추가/삭제/수정",
-      "주문서 작성",
-      "주문내역 확인",
-      "매출확인",
-      "조리구역에 실시간 주문 전송",
-      "서빙완료시 조리구역에 실시간 전송",
-      "주문시 실시간 술제공 목록 추가"
+      {
+        title:"메뉴 추가/삭제/수정",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"주문서 작성",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"주문내역 확인",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"매출확인",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"조리구역에 실시간 주문 전송",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"서빙완료시 조리구역에 실시간 전송",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"주문시 실시간 술제공 목록 추가",
+        description:"#",
+        relatedBlogId:"#"
+      },
     ],
     techStack: {
       frontend: ["React", "Socket.io-client", "MUI"],
@@ -119,8 +186,9 @@ export const projects: Project[] = [
         "주문 기록을 DB에 영속화하여 주문 이력/통계 제공 기능 추가",
       ],
     },
-    challenges: "socket 통신이 일부 클라이언트한테만 전송되는 문제가 있었습니다. socket.io 와 io.emit의 차이점에대해 공부한후 브로드캐스트 개념을 활용해 해결하였습니다.",
+    challenges:[],
     outcome: "3명의 축제도우미 인원 감축 및 카운터와 조리구역간의 협업 능력향상하여 축제부스 운영에 기여하였습니다.",
+    screenshots:["/assets/festival/1.png","/assets/festival/2.png","/assets/festival/3.png","/assets/festival/4.png","/assets/festival/5.png","/assets/festival/6.png"]
   },
   {
     id: "portfolio",
@@ -138,12 +206,36 @@ export const projects: Project[] = [
     team: "개인프로젝트",
     role: "풀스택 개발",
     keyFeatures: [
-      "메인 페이지 (Home / About)",
-      "프로젝트 카드 리스트",
-      "프로젝트 필터링 / 및 상세 페이지",
-      "블로그 / 기록 섹션 (Blog or Note)",
-      "다크모드 기능(Toggle형태)",
-      "반응형 디자인"
+      {
+        title:"메인 페이지 (Home / About)",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"프로젝트 카드 리스트",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"프로젝트 필터링 / 및 상세 페이지",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"블로그 / 기록 섹션 (Blog or Note)",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"다크모드 기능(Toggle형태)",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"반응형 디자인",
+        description:"#",
+        relatedBlogId:"#"
+      },
     ],
     techStack: {
       frontend: ["React", "TypeScript", "Tailwind CSS","shadcn/ui","lucide-react","framer-motion"],
@@ -158,8 +250,9 @@ export const projects: Project[] = [
       try: [
       ],
     },
-    challenges: "컴포넌트 구조와 페이지 라우팅을 체계적으로 설계하며, 프로젝트·블로그·프로필을 일관된 UI로 통합하는 데 어려움이 있었습니다. 또한 shadcn/ui와 Tailwind를 조합해 다크모드·반응형·애니메이션이 조화를 이루는 세련된 UX를 구현하기 위해 많은 시행착오를 겪었습니다.",
+    challenges: [],
     outcome: "",
+    screenshots:[]
   },
    {
     id: "dashboard",
@@ -191,8 +284,9 @@ export const projects: Project[] = [
       try: [
       ],
     },
-    challenges: "",
+    challenges: [],
     outcome: "",
+    screenshots:[]
   },
   {
     id: "hackerton_0",
@@ -210,12 +304,37 @@ export const projects: Project[] = [
     team: "프론트엔드 3명, 백엔드 1명",
     role: "풀스택 리드개발자 및 PM",
     keyFeatures: [
-      "KakaoMap을 통한 실시간 위치 표시 및 경로 시각화",
-      "OpenRouteService API를 이용한 안전 경로 및 일반 경로 탐색",
-      "대전시 공공데이터 기반 CCTV 위치 시각화",
-      "목적지 키워드 검색 및 지도 마커 표시 기능",
-      "프론트-백 간 Axios 통신을 통한 경로 요청 및 결과 표시",
-      "사용자 UI/UX 최적화를 위한 반응형 인터페이스 구현"
+      {
+        title:"KakaoMap을 통한 실시간 위치 표시 및 경로 시각화",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title: "OpenRouteService API를 이용한 안전 경로 및 일반 경로 탐색",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"대전시 공공데이터 기반 CCTV 위치 시각화",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"목적지 키워드 검색 및 지도 마커 표시 기능",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"프론트-백 간 Axios 통신을 통한 경로 요청 및 결과 표시",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"사용자 UI/UX 최적화를 위한 반응형 인터페이스 구현",
+        description:"#",
+        relatedBlogId:"#"
+      },
+
     ],
     techStack: {
       frontend: ["React", "JavaScript", "styled-components", "KakaoMap API"],
@@ -239,8 +358,9 @@ export const projects: Project[] = [
         "CCTV 밀집도 가중치를 반영한 안전도 점수 계산 기능 추가 계획"
       ]
     },
-    challenges: "KakaoMap과 OpenRouteService를 함께 사용하는 과정에서 좌표계(EPSG:5179 ↔ WGS84) 불일치 문제로 경로가 어긋나는 현상을 겪었습니다. 좌표 변환 알고리즘을 적용하고, Proxy 서버를 구성해 CORS와 인증 문제를 해결했습니다.",
-    outcome: "실제 대전시 CCTV 데이터를 활용해 안전 귀가 경로를 시각화하고, 사용자에게 두 가지 경로(일반/안전)를 비교 제공하는 기능을 완성했습니다. 팀 협업을 통해 데이터 처리 및 지도 시각화 능력을 크게 향상시켰습니다."
+    challenges: [],
+    outcome: "실제 대전시 CCTV 데이터를 활용해 안전 귀가 경로를 시각화하고, 사용자에게 두 가지 경로(일반/안전)를 비교 제공하는 기능을 완성했습니다. 팀 협업을 통해 데이터 처리 및 지도 시각화 능력을 크게 향상시켰습니다.",
+    screenshots:["/assets/hackerton_1/1.png","/assets/hackerton_1/2.png","/assets/hackerton_1/3.png","/assets/hackerton_1/4.png","/assets/hackerton_1/5.png"]
   },
   {
     id: "care_in_my_hand",
@@ -258,12 +378,36 @@ export const projects: Project[] = [
     team: "프론트엔드 1명, 백엔드 2명, 의료데이터 담당 2명",
     role: "프론트엔드 리드 및 백엔드 연동 개발",
     keyFeatures: [
-      "음성 입력(STT)으로 증상 인식 및 텍스트 변환",
-      "OpenAI API를 통한 증상 분석 및 응급/비응급 분류",
-      "비응급 시 진료과 추천 및 근처 병원 검색 기능 (KakaoMap 연동)",
-      "Google Vision OCR을 이용한 처방전 문자 인식",
-      "TTS(Text-to-Speech)를 통한 음성 안내",
-      "Flask 백엔드와 Axios 통신으로 AI 분석 결과 연동"
+      {
+        title:"음성 입력(STT)으로 증상 인식 및 텍스트 변환",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"OpenAI API를 통한 증상 분석 및 응급/비응급 분류",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"비응급 시 진료과 추천 및 근처 병원 검색 기능 (KakaoMap 연동)",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"Google Vision OCR을 이용한 처방전 문자 인식",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"TTS(Text-to-Speech)를 통한 음성 안내",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"Flask 백엔드와 Axios 통신으로 AI 분석 결과 연동",
+        description:"#",
+        relatedBlogId:"#"
+      },
     ],
     techStack: {
       frontend: ["React", "JavaScript", "Axios","styled-components","ORS(OpenRouterService)"],
@@ -287,8 +431,9 @@ export const projects: Project[] = [
         "AI 응답을 캐싱하여 반복 요청 최소화 및 UX 향상"
       ]
     },
-    challenges: "AI와 여러 외부 API를 동시에 연동해야 했기 때문에 비동기 통신 흐름이 매우 복잡했습니다. 특히 음성 인식(STT) → AI 분류(OpenAI) → 병원 검색(KakaoMap) → TTS 출력 과정을 끊김 없이 이어주는 구조를 설계하는 것이 큰 도전이었습니다.",
-    outcome: "노인 사용자 중심의 직관적 UI/UX와 음성 중심 인터페이스를 구현하여, 의료 접근성이 낮은 고령층도 스스로 증상을 파악하고 병원을 예약할 수 있는 프로토타입을 완성했습니다."
+    challenges: [],
+    outcome: "노인 사용자 중심의 직관적 UI/UX와 음성 중심 인터페이스를 구현하여, 의료 접근성이 낮은 고령층도 스스로 증상을 파악하고 병원을 예약할 수 있는 프로토타입을 완성했습니다.",
+    screenshots:["/assets/hackerton_2/1.png","/assets/hackerton_2/2.png","/assets/hackerton_2/3.png"]
   },
 
  {
@@ -307,12 +452,36 @@ export const projects: Project[] = [
     team: "개인 프로젝트",
     role: "프론트엔드 개발",
     keyFeatures: [
-      "닉네임 → ocid 1회 조회 후 localStorage에 캐시",
-      "캐릭터 장비/스탯 수집 및 환산 전투력 계산",
-      "이전 장비와 비교해 스타포스/잠재옵션 상승 감지(스펙업 로그)",
-      "최대 6명 캐릭터 동시 비교 및 랭킹 산출",
-      "메인 페이지에서 데이터 선조회 → 상세 페이지 무(無) API 렌더링",
-      "정렬/필터(직업, 전투력, 최근 갱신) 및 반응형 UI"
+      {
+        title:"닉네임 → ocid 1회 조회 후 localStorage에 캐시",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"캐릭터 장비/스탯 수집 및 환산 전투력 계산",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"이전 장비와 비교해 스타포스/잠재옵션 상승 감지(스펙업 로그)",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"최대 6명 캐릭터 동시 비교 및 랭킹 산출",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"메인 페이지에서 데이터 선조회 → 상세 페이지 무(無) API 렌더링",
+        description:"#",
+        relatedBlogId:"#"
+      },
+      {
+        title:"정렬/필터(직업, 전투력, 최근 갱신) 및 반응형 UI",
+        description:"#",
+        relatedBlogId:"#"
+      },
     ],
     techStack: {
       frontend: ["React", "JavaScript", "Axios", "styled-components", "localStorage"],
@@ -336,8 +505,9 @@ export const projects: Project[] = [
         "스펙업 로그를 시계열 그래프로 시각화 및 내보내기(CSV) 지원"
       ]
     },
-    challenges: "API 레이트리밋과 불완전한 장비 데이터로 인해 계산 결과의 일관성을 보장하기 어렵었습니다. 이를 완화하기 위해 캐시 만료 정책, 결측치 보정 규칙, 지연 재시도(백오프)를 도입했고, 계산 로직을 순수 함수로 분리해 디버깅 가능성을 높였습니다.",
-    outcome: "최대 6개 캐릭터의 전투력을 즉시 비교·랭킹화하고, 장비 변화에 따른 스펙업 내역을 명확히 기록·표시하여 성장 추적 효율을 크게 향상했습니다."
+    challenges: [],
+    outcome: "최대 6개 캐릭터의 전투력을 즉시 비교·랭킹화하고, 장비 변화에 따른 스펙업 내역을 명확히 기록·표시하여 성장 추적 효율을 크게 향상했습니다.",
+    screenshots:["/assets/maple_project.png","/assets/maple/1.png"]
   },
 
   {
@@ -378,7 +548,8 @@ export const projects: Project[] = [
         "React Native 앱 구조 리팩토링: 상태 관리 라이브러리(Zustand, Redux 등) 활용",
       ],
     },
-    challenges: "",
+    challenges: [],
     outcome: "",
+    screenshots:[]
   },
 ];

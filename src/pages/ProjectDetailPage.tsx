@@ -1,11 +1,18 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { projects } from "../data/projects";
-import { ArrowLeft, ExternalLink, Github, Calendar, Users, User } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Calendar, Users, User, BookOpen, ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { Separator } from "../ui/separator";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../ui/carousel";
 
 export function ProjectDetail() {
   const { id } = useParams();
@@ -56,7 +63,7 @@ export function ProjectDetail() {
           <p className="text-muted-foreground mb-8 break-words">{project.description}</p>
 
           <div className="flex flex-wrap gap-3">
-            {project.demoUrl && (
+            {(project.demoUrl && project.demoUrl !== "#") && (
               <Button size="lg" className="rounded-xl" asChild>
                 <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-5 w-5" />
@@ -108,17 +115,67 @@ export function ProjectDetail() {
 
         <Separator className="my-12" />
 
+        {project.screenshots && project.screenshots.length > 0 && (
+          <section className="mb-12">
+            <h2 className="mb-6">프로젝트 화면</h2>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[
+              ]}
+              className="w-full"
+            >
+              <CarouselContent>
+                {project.screenshots.map((screenshot, index) => (
+                  <CarouselItem key={index}>
+                    <div className="relative aspect-video rounded-2xl overflow-hidden bg-muted ">
+                      <img
+                        src={screenshot}
+                        alt={`${project.title} 스크린샷 ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
+            </Carousel>
+          </section>
+        )}
+
         {/* Key Features */}
         <section className="mb-12">
           <h2 className="mb-6">주요 기능</h2>
           <ul className="space-y-3">
-            {project.keyFeatures.map((feature, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <div className="mt-1 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <span className="text-sm">{index + 1}</span>
+           {project.keyFeatures.map((feature, index) => (
+              <div key={index} className="p-5 bg-card border border-border rounded-xl">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-3 flex-1">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-sm">{index + 1}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="mb-2">{feature.title}</h4>
+                      {feature.description && (
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {feature.description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  {feature.relatedBlogId && (
+                    <Link to={`/blog/${feature.relatedBlogId}`}>
+                      <Button variant="ghost" size="sm" className="gap-2 rounded-xl flex-shrink-0">
+                        <BookOpen className="w-4 h-4" />
+                        관련 글
+                      </Button>
+                    </Link>
+                  )}
                 </div>
-                <p className="text-muted-foreground break-words">{feature}</p>
-              </li>
+              </div>
             ))}
           </ul>
         </section>
@@ -173,18 +230,47 @@ export function ProjectDetail() {
 
         {/* Challenges & Outcome */}
         <section className="mb-12">
-          <h2 className="mb-6">도전과 성과</h2>
-
+          <h2 className="mb-6">주요 도전 과제</h2>
+          
           <div className="space-y-6">
-            <div className="rounded-2xl bg-muted/30 p-6">
-              <h3 className="mb-3">주요 도전 과제</h3>
-              <p className="leading-relaxed text-muted-foreground break-words">{project.challenges}</p>
-            </div>
+            {project.challenges.map((challenge, index) => (
+              <div key={index} className="p-6 bg-card border border-border rounded-2xl">
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <div className="flex items-start gap-3 flex-1">
+                    <div className="w-8 h-8 rounded-full bg-orange-500/10 text-orange-600 flex items-center justify-center flex-shrink-0 mt-1">
+                      <span>{index + 1}</span>
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="mb-2">{challenge.title}</h3>
+                    </div>
+                  </div>
+                  {challenge.relatedBlogId && (
+                    <Link to={`/blog/${challenge.relatedBlogId}`}>
+                      <Button variant="outline" size="sm" className="gap-2 rounded-xl flex-shrink-0">
+                        <BookOpen className="w-4 h-4" />
+                        자세히 보기
+                      </Button>
+                    </Link>
+                  )}
+                </div>
 
-            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6">
-              <h3 className="mb-3 text-primary">성과</h3>
-              <p className="leading-relaxed text-muted-foreground break-words">{project.outcome}</p>
-            </div>
+                <div className="space-y-4 ml-11">
+                  <div>
+                    <h4 className="mb-2 text-orange-600">문제 상황</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {challenge.problem}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="mb-2 text-green-600">해결 방법</h4>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {challenge.solution}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
