@@ -19,11 +19,10 @@ export function Blog() {
             </div>
           </div>
           <div>
-
             <Button
                   variant="ghost"
                   className="border-2 hover:cursor-pointer"
-                  onClick={() => navigate('/projects')}
+                  onClick={() => navigate('/blogs')}
                   >
                   전체보기
                   <ChevronRight className="w-4 h-4" />
@@ -33,7 +32,9 @@ export function Blog() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
+            post.primary ?
             <BlogCard key={post.id} post={post} />
+            : <></>
           ))}
         </div>
       </div>

@@ -14,6 +14,15 @@ const TSX = new Set(["tsx", "ts"]); // ts도 TSX 트랙으로 처리
 const HTML = new Set(["html", "htm"]);
 const CSS = new Set(["css"]);
 
+const urlRegex = /((https?:\/\/[^\s]+)|(?:www\.[^\s]+))/g;
+
+function toLinkifiedHTML(raw: string) {
+  return raw.replace(urlRegex, (m) => {
+    const href = m.startsWith("http") ? m : `https://${m}`;
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">${m}</a>`;
+  });
+}
+
 /** Babel 안전 로더: window.Babel → 동적 import → CDN 주입 */
 async function loadBabel(): Promise<any> {
   if (typeof (window as any).Babel !== "undefined") {
@@ -118,13 +127,44 @@ export default function CodeSandboxBlock({
       return `<!doctype html><html><head><style>${compiledOrRaw}</style></head><body><div>CSS Sandbox</div></body></html>`;
     }
     if (isJS) {
-      return `<!doctype html><html><body>
-        <div id="app"></div>
-        <pre id="console" style=";color:#9fe;padding:12px;border-radius:8px;overflow:auto;max-height:40vh;"></pre>
-        <script>(function(){ ${makeConsoleHeader}
-          try { ${compiledOrRaw} } catch(e){ post("[Error] " + (e && (e.stack||e.message) || e)); }
-        })();</script>
-      </body></html>`;
+        const htmlSafe = compiledOrRaw
+            .replace(/<\/script>/gi, '<\\/script>')
+            .replace(/<!--/g, '<\\!--')
+            .replace(/\u2028/g, '\\u2028')
+            .replace(/\u2029/g, '\\u2029');
+
+        return `<!doctype html><html><body>
+            <pre id="console"
+                style="background:#0b0b0b;color:#b6f3ff;padding:12px;margin:0;min-height:340px;
+                        font:12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></pre>
+            <script>(function(){
+            // 콘솔 캡쳐
+            const con = document.getElementById('console');
+            const post = (s) => { try { con.textContent += s + "\\n"; parent.postMessage({__sandbox_log:s},"*"); } catch {} };
+            ["log","info","warn","error"].forEach(k=>{
+                const o = console[k].bind(console);
+                console[k] = (...a)=>{ 
+                try { post(a.map(x => typeof x==='object' ? JSON.stringify(x) : String(x)).join(' ')); } catch {}
+                o(...a);
+                };
+            });
+
+            // Node.js 전용 코드 감지되면 실행 대신 표시만 (require/fs 등)
+            var src = ${JSON.stringify(htmlSafe)};
+            if (/\\brequire\\s*\\(|fs\\s*\\.|process\\s*\\.|__dirname\\b|readFileSync\\b/.test(src)) {
+                post("[Info] Node.js 전용 코드가 감지되어 브라우저에서는 실행하지 않습니다. (보기 전용)");
+                post("---- Code ----");
+                post(src);
+                return;
+            }
+
+            try {
+                eval(src); // 순수 JS 실행
+            } catch (e) {
+                post("[Error] " + (e && (e.stack || e.message) || e));
+            }
+            })();</script>
+        </body></html>`;
     }
     if (isTSX) {
         return `<!doctype html><html><body>
@@ -235,26 +275,38 @@ export default function CodeSandboxBlock({
         value={source}
         onChange={(e) => setSource(e.target.value)}
         spellCheck={false}
-        className="w-full min-h-40 font-mono text-sm p-4 outline-none bg-background"
+        className="w-full min-h-70 font-mono text-sm p-4 outline-none bg-background"
         placeholder="Edit code here..."
       />
 
       <div className="grid md:grid-cols-2 gap-0 border-t">
-        <div className="p-0">
+        {isJS}
+        <div className={isJS ? "p-0" : "p-0"}>
           <iframe
             key={iframeKey}
             title="sandbox"
             sandbox="allow-scripts"
             srcDoc={doc}
-            className="w-full h-[360px] bg-white"
+            className={isJS ? "w-0 h-0 absolute opacity-0 pointer-events-none" : "w-full h-[360px] bg-white"}
+            aria-hidden={isJS ? "true" : "false"}
           />
         </div>
-        <div className="p-0 border-l">
-          <div className="px-4 py-2 text-xs text-muted-foreground bg-muted/40 border-b">
-            Console
+
+        {isJS ? (
+          <div className="p-0 w-full">
+            <div className="px-4 py-2 text-xs text-muted-foreground bg-muted/40 border-b">
+              Console
+            </div>
+            <pre className="p-4 text-sm h-[200px] overflow-auto">{logs.join("\n")}</pre>
           </div>
-          <pre className="p-4 text-sm h-[320px] overflow-auto">{logs.join("\n")}</pre>
-        </div>
+        ) : (
+          <div className="p-0 border-l">
+            <div className="px-4 py-2 text-xs text-muted-foreground bg-muted/40 border-b">
+              Console
+            </div>
+            <pre className="p-4 text-sm h-[200px] overflow-auto">{logs.join("\n")}</pre>
+          </div>
+        )}
       </div>
     </div>
   );

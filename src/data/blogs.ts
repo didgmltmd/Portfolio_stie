@@ -1,5 +1,8 @@
+export type BlogCategory  = "공부" | "프로젝트" | "알고리즘" | "대외활동";
+
 export interface BlogPost {
   id: string;
+  primary:boolean;
   title: string;
   excerpt: string;
   date: string;
@@ -13,11 +16,12 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
     id: "react-18-concurrent",
+    primary:true,
     title: "React 18의 새로운 기능과 Concurrent Rendering 이해하기",
     excerpt: "React 18에서 도입된 Concurrent Rendering의 개념과 실제 프로젝트에 적용한 경험을 공유합니다. useTransition과 useDeferredValue의 활용 사례를 소개합니다.",
     date: "2024년 10월 1일",
     readTime: "8분",
-    category: "React",
+    category: "공부",
     tags: ["React", "React 18", "Concurrent Rendering", "Performance"],
     series: "React 완벽 가이드",
     content: `
@@ -121,11 +125,12 @@ React 18의 Concurrent Rendering은 사용자 경험을 크게 개선할 수 있
   },
   {
     id: "typescript-advanced-types",
+    primary:false,
     title: "TypeScript 고급 타입 시스템 활용하기",
     excerpt: "제네릭, 유틸리티 타입, 조건부 타입 등 TypeScript의 고급 기능을 활용하여 더 안전하고 유지보수 가능한 코드를 작성하는 방법을 알아봅니다.",
     date: "2024년 9월 15일",
     readTime: "10분",
-    category: "TypeScript",
+    category: "프로젝트",
     tags: ["TypeScript", "Generic", "Utility Types", "Advanced"],
     content: `
 # TypeScript 고급 타입 시스템 활용하기
@@ -246,11 +251,12 @@ TypeScript의 고급 타입 기능을 잘 활용하면 런타임 에러를 크�
   },
   {
     id: "web-performance-optimization",
+    primary:false,
     title: "성능 최적화: 웹 애플리케이션 로딩 속도 50% 개선하기",
     excerpt: "Code Splitting, Lazy Loading, 이미지 최적화 등 다양한 기법을 통해 실제 프로젝트의 성능을 대폭 개선한 경험을 공유합니다.",
     date: "2024년 9월 1일",
     readTime: "12분",
-    category: "Performance",
+    category: "프로젝트",
     tags: ["Performance", "Optimization", "Web Vitals", "React"],
     series: "웹 성능 최적화 시리즈",
     content: `
@@ -310,16 +316,18 @@ function App() {
   },
   {
     id: "tailwind-design-system",
+    primary:false,
     title: "Tailwind CSS로 일관성 있는 디자인 시스템 구축하기",
     excerpt: "Tailwind CSS의 커스터마이징 기능을 활용하여 프로젝트에 맞는 디자인 시스템을 구축하고 관리하는 방법을 소개합니다.",
     date: "2024년 8월 20일",
     readTime: "7분",
-    category: "CSS",
+    category: "프로젝트",
     tags: ["Tailwind CSS", "Design System", "CSS", "UI/UX"],
     content: "Tailwind CSS 디자인 시스템 구축 가이드...",
   },
   {
     id: "web-accessibility-guide",
+    primary:false,
     title: "접근성(a11y)을 고려한 웹 개발 가이드",
     excerpt: "모든 사용자가 웹사이트를 사용할 수 있도록 접근성을 고려한 개발 방법과 테스트 도구를 소개합니다. WCAG 가이드라인을 따르는 실용적인 팁을 공유합니다.",
     date: "2024년 8월 5일",
@@ -329,87 +337,104 @@ function App() {
     content: "웹 접근성 구현 가이드...",
   },
   {
-    id: "boj-1316",
-    title: "BOJ 1316 - 그룹 단어 체커",
-    excerpt:
-      "문자열을 배열화하고 이중 반복문을 통해 연속되는 문자를 판별하는 방법을 학습한 문제. 처음 시도에서 정답을 맞출 수 있었다.",
-    date: "2025-10-19",
-    readTime: "4 min",
-    category: "Algorithm",
-    tags: ["Baekjoon", "JavaScript", "String", "Loop", "Algorithm"],
-    content: `
-  [문제 링크] https://www.acmicpc.net/problem/1316
+  id: "boj-1316-group-word-checker",
+  primary:true,
+  title: "백준 1316번 - 그룹 단어 체커 풀이",
+  excerpt:
+    "문자열을 배열화하고 이중 반복문을 다루는 연습을 할 수 있었던 문제입니다. 그룹 단어의 조건을 검사하는 과정을 단계별로 설명합니다.",
+  date: "2024년 3월 1일",
+  readTime: "6분",
+  category: "알고리즘",
+  tags: ["백준", "문자열", "JavaScript", "그룹 단어 체커"],
+  series: "Baekjoon 풀이 모음",
+  content: `
+백준 1316번
+이 문제는 문자열을 배열화 하는 법에대해 공부할 수 있었던 문제였다. 그리고 이중배열을 다루는데 좀더 능숙해질 수 있었다.
+ 
 
-  이 문제는 문자열을 배열화하는 법에 대해 공부할 수 있었던 문제였다. 
-  그리고 이중배열을 다루는 연습을 통해 배열 중첩 구조를 다루는 능숙함을 얻을 수 있었다.
+https://www.acmicpc.net/problem/1316
 
-  ---
+ 
+1316번: 그룹 단어 체커
 
-  ### 🧩 문제 요약
-  '그룹 단어'란, 한 단어 내의 모든 문자가 연속해서 나타나는 경우만을 의미한다.  
-  예를 들어 **ccazzzzbb**는 c, a, z, b가 각각 연속해서 나타나므로 그룹 단어이다.  
-  반면 **aabbbccb**처럼 중간에 다른 문자가 끼면 그룹 단어가 아니다.
+그룹 단어란 단어에 존재하는 모든 문자에 대해서, 각 문자가 연속해서 나타나는 경우만을 말한다. 예를 들면, ccazzzzbb는 c, a, z, b가 모두 연속해서 나타나고, kin도 k, i, n이 연속해서 나타나기 때
 
-  ---
+www.acmicpc.net
+ 
 
-  ### 💡 나의 풀이 접근
-  문자열을 **문자 배열로 변환**하여 이중 반복문으로 검사하였다.
+ 
 
-  예를 들어 "happy"가 주어졌을 때  
-  이를 ['h', 'a', 'p', 'p', 'y']로 변환한 후,  
-  각 문자 i에 대해 j를 순회하며 같은 문자가 연속되는지를 체크했다.
+ 
 
-  ---
+처음이자 정답으로 제출한 코드
 
-  ### 🔍 핵심 로직
-  1. 각 단어를 문자 배열로 변환  
-  2. 이중 반복문을 통해 문자의 연속 여부 검사  
-  3. 중간에 다른 문자가 낀 후 다시 같은 문자가 등장하면 그룹 단어 아님 표시  
-  4. 모든 검사를 통과하면 결과값(result)에 +1
+\`\`\`js
+const input = "3\\nhappy\\nnew\\nyear".trim().split("\\n");
 
-  ---
+let words = [];
+for (let i = 0; i < input.length; i++) {
+  words.push(input[i].trim());
+}
 
-  ### 💻 코드
-  \`\`\`js
-  const fs = require('fs');
-  const input = fs.readFileSync("/dev/stdin").toString().trim().split("\\n");
+let result = 0;
 
-  // 입력값 배열화
-  let words = [];
-  for (let i = 0; i < input.length; i++) {
-    words.push(input[i].trim());
-  }
+for (let i = 1; i < words.length; i++) {
+  let check = [...words[i]];
+  let linked = true;
 
-  let result = 0;
-
-  for (let i = 1; i < words.length; i++) {
-    let check = [...words[i]];
-    let linked = true;
-
-    for (let j = 0; j < check.length; j++) {
-      let same = true;
-      for (let k = j + 1; k < check.length; k++) {
-        if (check[j] !== check[k]) same = false;
-        if (!same && check[j] === check[k]) linked = false;
-      }
+  for (let j = 0; j < check.length; j++) {
+    let same = true;
+    for (let k = j + 1; k < check.length; k++) {
+      if (check[j] != check[k]) same = false;
+      if (!same && check[j] == check[k]) linked = false;
     }
-
-    if (linked) result++;
   }
 
-  console.log(result);
-  \`\`\`
+  if (linked) result++;
+}
 
-  ---
+console.log(result);
+\`\`\`
 
-  ### ✏️ 회고
-  이 문제를 처음 봤을 때, “문자 배열화 + 이중 반복문”으로 풀면 될 것 같다고 생각했다.  
-  직관적인 접근이었지만, 실제로 구현하며 **문자 비교 로직**과  
-  **불리언 플래그 전환 타이밍**의 중요성을 다시 한번 느꼈다.
+이 문제를 처음 봤을떄 문자를 배열화하여 이중배열로 확인하면 금방 풀리겠다 라고 생각했다.
 
-  한 번에 정답을 맞추긴 했지만,  
-  코드 복잡도를 줄이기 위해 이후에는 **Set과 이전 문자 비교 방식**으로 리팩토링할 수도 있겠다고 느꼈다.
-    `,
-    series: "Baekjoon Study Log"
-  }
+ 
+
+처음의 생각했던 방식은 아래와 같다.
+
+ 
+
+happy 라는 입력값이 있을경우 이를 배열화 하여
+
+[ 'h', 'a', 'p', 'p', 'y'] 로 변환하고 이중배열을 통하여 이어지는 알파벳들을 검사한다.
+
+ 
+
+i번째 인덱스가 h일때 j번째 인덱스는 appy를 검사하고
+
+i번째 인덱스가 a일때 j번째 인덱스는 ppy를 검사한다.
+
+ 
+
+이때 same 이라는 boolean 값을 하나 만들어 반복문이 실행될때 이 값을 true로 두고 
+
+i번째 인덱스값과 j번째 인덱스가 달라질경우 해당 값을 false로 변경한다.
+
+ 
+
+이떄 same값이 false 일때부터 i번째 인덱스와 j번째 인덱스가 같을경우 linked 값을 false로 변경하여 링크단어가 아님을 표시한다.
+
+ 
+
+마지막으로 반복문이 끝날때 linked 값이 true이면 result 값에 1을 더하고 아닐경우 그냥 패스한다.
+
+ 
+
+ 
+
+해당 문제를 위와 같은 과정으로 풀이하였고 다행히 한번에 통과할 수 있었다.
+  `,
+},
+
+
 ];

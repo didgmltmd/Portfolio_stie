@@ -264,7 +264,7 @@ export function BlogDetail() {
               <div className="hidden sm:flex justify-between items-center">
                 <Button
                   variant="outline"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/blogs")}
                   className="rounded-xl hover:cursor-pointer"
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" />
@@ -272,32 +272,6 @@ export function BlogDetail() {
                 </Button>
               </div>
             </article>
-
-            {/* 사이드 카드 */}
-            <aside className="hidden xl:block w-64 flex-shrink-0">
-              <div className="sticky top-24">
-                <div className="p-6 bg-card border border-border rounded-2xl">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-primary/60 mb-4 flex items-center justify-center">
-                    <span className="text-2xl">👨‍💻</span>
-                  </div>
-                  <h4>프론트엔드 개발자</h4>
-                  <h6 className="mb-2">
-                    <b>양희승</b>
-                  </h6>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    사용자 경험을 최우선으로 생각하는 개발자입니다.
-                  </p>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full rounded-xl hover:cursor-pointer"
-                    onClick={() => navigate("/")}
-                  >
-                    프로필 보기
-                  </Button>
-                </div>
-              </div>
-            </aside>
           </div>
         </div>
       </div>

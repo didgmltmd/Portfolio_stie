@@ -1,23 +1,23 @@
 import { useMemo, useState,useOptimistic,startTransition } from "react";
-import { ProjectCard } from "../components/ProjectCard";
-import type { ProjectCategory } from "../data/projects";
-import { projects } from "../data/projects";
+import type { BlogPost, BlogCategory } from "../data/blogs";
+import { BlogCard } from "../components/BlogCard";
+import { blogPosts } from "../data/blogs";
 import { ChevronLeft, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Badge } from "../ui/badge";
 
-const categories: ProjectCategory[] = ["프로젝트","해커톤","토이 프로젝트"];
+const categories: BlogCategory[] = ["공부" , "프로젝트" , "알고리즘" , "대외활동"];
 
 export function BlogList(){
-    const [selectedCategory, setSelectedCategory] = useState<ProjectCategory | "전체">("전체");
+    const [selectedCategory, setSelectedCategory] = useState<BlogCategory | "전체">("전체");
     const [selectedTags,setSelectedTags ] = useState<string[]>([]);
 
     const allTags = useMemo(() => {
         const tagSet = new Set<string>();
-        projects.forEach(project => {
-            project.tags.forEach(tag => tagSet.add(tag));
+        blogPosts.forEach(post => {
+            post.tags.forEach(tag => tagSet.add(tag));
         });
         return Array.from(tagSet).sort();
     },[]);
@@ -48,12 +48,17 @@ export function BlogList(){
     };
 
 
-    const filteredProjects = useMemo(() => {
-        if(optimisticTags.length === 0) return projects;
-        return projects.filter(p =>
-            optimisticTags.every(tag => p.tags.includes(tag))
+    const filteredPosts = useMemo(() => {
+        let filtered = selectedCategory === "전체"
+            ? blogPosts
+        : blogPosts.filter(post => post.category === selectedCategory);
+
+        if(optimisticTags.length === 0) return filtered;
+
+        return filtered.filter(project =>
+            optimisticTags.every(tag => project.tags.includes(tag))
         )
-    },[optimisticTags]);
+    },[selectedCategory,optimisticTags]);
 
 
     return(
@@ -85,10 +90,10 @@ export function BlogList(){
                                 }`}
                             >
                                 전체
-                                <span className="ml-2 text-sm opacity-70">({projects.length})</span>
+                                <span className="ml-2 text-sm opacity-70">({blogPosts.length})</span>
                             </button>
                             {categories.map((category) => {
-                                const count = projects.filter(p => p.category === category).length;
+                                const count = blogPosts.filter(p => p.category === category).length;
                                 return(
                                     <button
                                         key={category}
@@ -144,10 +149,10 @@ export function BlogList(){
                 <main className="flex-1 container mx-auto px-8 py-12">
                     <div className="mb-8">
                         <h1 className="mb-4">
-                            {selectedCategory === "전체" ? "모든 프로젝트" : selectedCategory}
+                            {selectedCategory === "전체" ? "모든 포스트" : selectedCategory}
                         </h1>
                         <p className="text-muted-foreground">
-                            총 {filteredProjects.length}개의 프로젝트
+                            총 {filteredPosts.length}개의 포스트
                         </p>
                         {selectedTags.length > 0 && (
                             <div className="flex items-center gap-2 flex-wrap">
@@ -165,16 +170,16 @@ export function BlogList(){
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredProjects.map((project) => (
-                            <ProjectCard key={project.id} project={project} />
+                        {filteredPosts.map((post) => (
+                            <BlogCard key={post.id} post={post} />
                         ))}
                     </div>
 
-                    {filteredProjects.length === 0 && (
+                    {filteredPosts.length === 0 && (
                         <div className="text-center py-20 text-muted-foreground">
                             {selectedTags.length > 0
-                                ? "선택한 태그와 일치하는 프로젝트가 없습니다."
-                                : "해당 카테고리에 프로젝트가 없습니다."
+                                ? "선택한 태그와 일치하는 포스트가 없습니다."
+                                : "해당 카테고리에 포스트가 없습니다."
                             }
                         </div>
                     )}
