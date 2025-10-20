@@ -106,6 +106,7 @@ export default function CodeSandboxBlock({
   useEffect(() => {
     latestSrcRef.current = source;
   }, [source]);
+  console.log(logs);
 
   // 부모(호스트) 콘솔 패널 업데이트
   useEffect(() => {
