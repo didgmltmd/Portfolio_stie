@@ -280,12 +280,17 @@ export default function CodeSandboxBlock({
 
       <div className="border-t">
         {isJS ? (
-          <div className="p-0 w-full">
-            <div className="px-4 py-2 text-xs text-muted-foreground bg-muted/40 border-b">
-              Console
+          <>
+            <div className="p-0 w-full">
+              <iframe
+                key={iframeKey}
+                title="sandbox"
+                sandbox="allow-scripts"
+                srcDoc={doc}
+                className="w-full h-[360px] font-black"
+              />
             </div>
-            <pre className="p-4 text-sm h-[200px] overflow-auto">{logs.join("\n")}</pre>
-          </div>
+          </>
         ) : (
           <div className="p-0 w-full">
             <iframe
@@ -293,7 +298,7 @@ export default function CodeSandboxBlock({
               title="sandbox"
               sandbox="allow-scripts"
               srcDoc={doc}
-              className="w-full h-[360px] bg-white"
+              className="w-full h-[360px] bg-white "
             />
           </div>
         )}

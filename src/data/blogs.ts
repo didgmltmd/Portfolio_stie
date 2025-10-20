@@ -252,7 +252,7 @@ React 18의 Concurrent Rendering은 사용자 경험을 크게 개선할 수 있
 
   처음이자 정답으로 제출한 코드
 
-\`\`\`tsx
+\`\`\`js
 const input = [
   "3",
   "Amy P P N",
