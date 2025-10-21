@@ -64,7 +64,7 @@ export function MainPage() {
           </div>
 
           {/* 데스크톱 전용 프로필 사이드바 */}
-          <aside className="hidden lg:block w-full lg:w-[320px] xl:w-[360px] shrink-0">
+          <aside className="hidden [@media(min-width:1620px)]:block w-full lg:w-[320px] xl:w-[360px] shrink-0">
             <div className="sticky top-24">
               <ProfileSidebar />
             </div>

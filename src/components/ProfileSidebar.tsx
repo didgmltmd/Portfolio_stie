@@ -11,7 +11,7 @@ export function ProfileSidebar() {
   ];
 
   return (
-    <div className="w-80 space-y-6">
+    <div className="w-[20rem] space-y-6">
       {/* About Me Card */}
       <div className="bg-card border border-border rounded-2xl p-6 sticky top-6">
         <div className="flex flex-row space-x-38">
