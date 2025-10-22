@@ -86,12 +86,12 @@ const makeConsoleHeader = `
   });
 `;
 
-function escapeHTML(s: string) {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
+// function escapeHTML(s: string) {
+//   return s
+//     .replace(/&/g, "&amp;")
+//     .replace(/</g, "&lt;")
+//     .replace(/>/g, "&gt;");
+// }
 
 export default function CodeSandboxBlock({
   code,
