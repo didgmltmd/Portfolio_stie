@@ -37,9 +37,9 @@ export function MainPage() {
 
       <Header />
       {/* Main */}
-      <main id="projects" className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+      <main id="projects" className=" max-w-screen-xl px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
         <div className="mb-6 lg:mb-8 flex flex-col w-full">
-          <div className="flex w-full max-w-[52rem] justify-between items-center">
+          <div className="flex w-full justify-between items-center">
             <h2 className="text-2xl font-semibold tracking-tight mb-2">프로젝트</h2>
             <Button
               variant="ghost"
@@ -58,7 +58,7 @@ export function MainPage() {
         </div>
 
         {/* 모바일 1열 / 데스크톱 2열 */}
-        <div className="grid gap-8 grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_360px]">
+        <div className="grid gap-8 grid-cols-1 lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_200px]">
           <div className="min-w-0">
             <Projects />
           </div>

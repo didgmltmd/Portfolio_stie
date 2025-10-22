@@ -6,6 +6,9 @@ import { ChevronLeft, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { ThemeToggle } from "../components/ThemeToggle";
+import BlogListSidebar from "../components/BlogListSidebar";
+import { Sheet, SheetTrigger, SheetContent } from "../ui/sheet";
+import { Menu } from "lucide-react";
 import { Badge } from "../ui/badge";
 
 const categories: BlogCategory[] = ["공부" , "프로젝트" , "알고리즘" , "대외활동"];
@@ -63,111 +66,85 @@ export function BlogList(){
 
     return(
         <div className="min-h-screen flex flex-col">
-            <header className="border-b sticky top-0 bg-background z-10 flex flex-row justify-between">
-                <Link to="/">
-                    <Button variant="ghost" className="gap-2 hover:cursor-pointer h-14 ml-[3rem]">
-                        <ChevronLeft className="w-4 h-4" />
-                        홈으로
-                    </Button>
-                </Link>
-                <div className="flex align-middle items-center mr-[3rem]">
+            <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur lg:hidden">
+                <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+                    <div>
+                        <Sheet>
+                        <SheetTrigger asChild>
+                            <Button variant="ghost" size="icon" className="rounded-xl hover:cursor-pointer" aria-label="open sidebar">
+                            <Menu className="h-5 w-5 " />
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent side="left" className="max-w-[250px] p-0">
+                            <BlogListSidebar 
+                                setSelectedCategory={setSelectedCategory}
+                                selectedCategory={selectedCategory}
+                                categories={categories}
+                                selectedTags={selectedTags}
+                                allTags={allTags}
+                                handleTagClick={handleTagClick}
+                                clearAll={clearAll}
+                            />
+                        </SheetContent>
+                        </Sheet>
+                    </div>
                     <ThemeToggle />
                 </div>
             </header>
 
 
-            <div className="flex-1 flex">
-                <aside className="w-64 border-r bg-muted/30 p-6">
-                    <div className="sticky top-24">
-                        <h3 className="mb-4">카테고리</h3>
-                        <nav className="space-y-2">
-                            <button
-                                onClick={() => setSelectedCategory("전체")}
-                                className={`hover:cursor-pointer w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                                    selectedCategory === "전체"
-                                        ? "bg-primary text-primary-foreground"
-                                        : "hover:bg-muted"
-                                }`}
-                            >
-                                전체
-                                <span className="ml-2 text-sm opacity-70">({blogPosts.length})</span>
-                            </button>
-                            {categories.map((category) => {
-                                const count = blogPosts.filter(p => p.category === category).length;
-                                return(
-                                    <button
-                                        key={category}
-                                        onClick={() => setSelectedCategory(category)}
-                                        className={`hover:cursor-pointer w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                                            selectedCategory === category
-                                                ? "bg-primary text-primary-foreground"
-                                                : "hover:bg-muted"
-                                        }`}
-                                    >
-                                        {category}
-                                        <span className="ml-2 text-sm opacity-70">({count})</span>
-                                    </button>
-                                )
-                            })}
-                  
-                        <div>
-                            <div className="flex items-center justify-between mb-4">
-                                <h3>기술 태그</h3>
-                                {selectedTags.length > 0 && (
-                                    <Button
-                                        variant="ghost"
-                                        size="sm"
-                                        onClick={clearAll}
-                                        className="h-auto p-1 text-xs"
-                                    >
-                                        초기화
-                                    </Button>
-                                )}
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                                {allTags.map((tag) => {
-                                    const isSelected = selectedTags.includes(tag);
-                                    return(
-                                        <Badge
-                                            key={tag}
-                                            variant={isSelected ? "default" : "outline"}
-                                            className="cursor-pointer hover:bg-primary/90 transition-colors"
-                                            onClick={() => handleTagClick(tag)}
-                                        >
-                                            {tag}
-                                            {isSelected && <X className="w-3 h-3 ml-1" />}
-                                        </Badge>
-                                    )
-                                })}
-                            </div>
-                        </div>
 
-                      </nav>
+
+
+            <header className="border-b sticky top-0 bg-background z-10 justify-between lg:block hidden min-w-screen">
+                <div className="flex flex-row justify-between">
+                    <Link to="/">
+                        <Button variant="ghost" className="gap-2 hover:cursor-pointer h-14 ml-[3rem]">
+                            <ChevronLeft className="w-4 h-4" />
+                            홈으로
+                        </Button>
+                    </Link>
+                    <div className="flex align-middle items-center mr-[3rem]">
+                        <ThemeToggle />
                     </div>
-                </aside>
+                </div>
+            </header>
 
-                <main className="flex-1 container mx-auto px-8 py-12">
-                    <div className="mb-8">
+            <main className="flex-1 container flex flex-row">
+                <div className="lg:block hidden">
+                    <BlogListSidebar 
+                        setSelectedCategory={setSelectedCategory}
+                        selectedCategory={selectedCategory}
+                        categories={categories}
+                        selectedTags={selectedTags}
+                        allTags={allTags}
+                        handleTagClick={handleTagClick}
+                        clearAll={clearAll}
+                        />
+                </div>
+                <div className="mb-8 px-8 py-8">
+                    <div className="flex flex-col">
+
                         <h1 className="mb-4">
                             {selectedCategory === "전체" ? "모든 포스트" : selectedCategory}
                         </h1>
                         <p className="text-muted-foreground">
                             총 {filteredPosts.length}개의 포스트
-                        </p>
-                        {selectedTags.length > 0 && (
-                            <div className="flex items-center gap-2 flex-wrap">
-                            <span className="text-sm text-muted-foreground">필터:</span>
-                            {selectedTags.map((tag) => (
-                                <Badge key={tag} variant="secondary" className="gap-1 hover:cursor-pointer" onClick={() => handleTagClick(tag)}>
-                                {tag}
-                                <X
-                                    className="w-3 h-3 cursor-pointer"
-                                />
-                                </Badge>
-                            ))}
-                            </div>
-                        )}
+                    </p>
                     </div>
+                    {selectedTags.length > 0 && (
+                        <div className="flex items-center gap-2 flex-wrap">
+                        <span className="text-sm text-muted-foreground">필터:</span>
+                        {selectedTags.map((tag) => (
+                            <Badge key={tag} variant="secondary" className="gap-1 hover:cursor-pointer" onClick={() => handleTagClick(tag)}>
+                            {tag}
+                            <X
+                                className="w-3 h-3 cursor-pointer"
+                            />
+                            </Badge>
+                        ))}
+                        </div>
+                    )}
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {filteredPosts.map((post) => (
@@ -183,8 +160,8 @@ export function BlogList(){
                             }
                         </div>
                     )}
-                </main>
-            </div>
+                </div>
+            </main>
         </div>
     )
 }

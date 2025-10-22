@@ -1,7 +1,7 @@
 export default function Header() {
     return(
         <section id="home" className="relative overflow-hidden border-b">
-            <div className="container mx-auto px-8 py-16">
+            <div className="container px-8 py-16">
                 <div className="max-w-3xl">
                 {/* <div className="mb-6">
                     <span className="inline-block px-4 py-2 rounded-full bg-primary/10 text-primary text-sm">

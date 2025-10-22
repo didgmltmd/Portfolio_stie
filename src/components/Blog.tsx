@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 export function Blog() {
   const navigate = useNavigate();
   return (
-    <section id="blog" className="container mx-auto px-8 py-24 bg-gradient-to-b from-background to-muted/20">
-      <div className="max-w-6xl mx-auto">
+    <section id="blog" className="container px-8 py-24 bg-gradient-to-b from-background to-muted/20">
+      <div className="max-w-6xl ">
         <div className="mb-16 flex w-full max-w-full justify-between items-center">
           <div className="">
             <div>

@@ -16,7 +16,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
   {
   id: "boj-1316-group-word-checker",
-  primary:true,
+  primary:false,
   title: "백준 1316번 - 그룹 단어 체커 풀이",
   excerpt:
     "문자열을 배열화하고 이중 반복문을 다루는 연습을 할 수 있었던 문제입니다. 그룹 단어의 조건을 검사하는 과정을 단계별로 설명합니다.",
@@ -115,7 +115,7 @@ i번째 인덱스값과 j번째 인덱스가 달라질경우 해당 값을 false
 },
   {
   id: "boj-1384-message",
-  primary: true,
+  primary: false,
   title: "백준 1384번 - 메시지 풀이",
   excerpt:
     "문제의 방향을 잘못 이해해 처음에 헤맸던 문제입니다. 종이를 넘기는 방향과 인덱스 역추적 로직을 구현하며 문제를 해결했습니다.",
@@ -225,7 +225,7 @@ while (roof < input.length && Number(input[roof]) !== 0) {
 
 {
   id: "feature-kakaomap-realtime",
-  primary: true,
+  primary: false,
   title: "KakaoMap 실시간 위치 표시 & 경로 시각화",
   excerpt: "브라우저 Geolocation과 KakaoMap Overlay를 결합해 현재 위치를 스트리밍하고, 이동 경로를 폴리라인으로 시각화했습니다.",
   date: "2025년 10월 19일",
@@ -1496,6 +1496,85 @@ export default function App() {
 
 이 경험으로, 협업은 단순 요청 처리보다 **실제 불편을 함께 해결하는 과정**임을 재확인했습니다.
     `,
+},
+{
+  id: "react19-useoptimistic-ux",
+  primary: true,
+  title: "React 19의 useOptimistic으로 더 빠른 사용자 경험 구현하기",
+  excerpt:
+    "포트폴리오 사이트에 React 19의 useOptimistic 훅을 적용해보며, 서버 없이도 낙관적 UI의 개념을 직접 실험해봤습니다. 작은 변화였지만 사용자 경험의 즉각성을 크게 느낄 수 있었습니다.",
+  date: "2025년 10월 22일",
+  readTime: "8분",
+  category: "Frontend",
+  tags: ["React19", "useOptimistic"],
+  series: "개인 포트폴리오 개선기",
+  content: `
+  개인 포트폴리오 사이트를 React로 제작하면서, 프로젝트 목록을 필터링할 때 화면이 즉시 갱신되지 않는 문제가 있었다.(사실 써보기위해 억지로 문제점을 찾았다)
+  클릭 이후 화면이 늦게 반응하다 보니, 실제로는 빠르게 처리되더라도 사용자는 약간의 지연을 느끼는 듯했다.
+
+  처음에는 useState와 useMemo를 사용해 렌더링 최적화를 시도했지만, 클라이언트 단에서만 처리하는 구조라 비동기 상태를 세밀하게 제어하기 어려웠다.
+  그러던 중 React 19에서 새롭게 추가된 useOptimistic 훅을 접했고, **서버가 없는 환경에서도 낙관적 업데이트의 개념을 직접 실험**해보기로 했다.
+
+
+### useOptimistic의 개념
+  useOptimistic은 비동기 요청의 결과를 기다리지 않고, 사용자가 ‘이렇게 될 것이다’라고 예상하는 상태를 먼저 렌더링하도록 도와주는 훅이다.
+  쉽게 말해, 실제 데이터가 업데이트되기 전에도 화면을 먼저 바꿔줌으로써 사용자는 즉각적인 반응을 체감할 수 있다.
+
+
+### 적용해보기
+  현재 내 포트폴리오에는 백엔드 서버가 없기 때문에, 실제 요청을 보내지는 않지만  
+  useOptimistic의 작동 원리를 직접 체험해보기 위해 로컬 상태에만 적용했다.
+
+
+  비록 실제 서버 통신은 없지만,
+  useOptimistic을 통해 사용자가 클릭 즉시 반응하는 듯한 **즉각적인 인터랙션 흐름**을 구현할 수 있었다.
+
+### 기존 방식
+
+\`\`\`code
+// 기존 방식
+const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+const handleTagClick = (tag: string) => {
+  const next = selectedTags.includes(tag)
+    ? selectedTags.filter((t) => t !== tag)
+    : [...selectedTags, tag];
+
+  setSelectedTags(next);
+};
+\`\`\`
+
+### useOptimistic 적용 후
+
+\`\`\`code
+const [optimisticTags, applyOptimistic] = useOptimistic<string[], string[]>(
+  selectedTags,
+  (_state, newTags) => newTags
+);
+
+const handleTagClick = (tag: string) => {
+  const next = optimisticTags.includes(tag)
+    ? optimisticTags.filter((t) => t !== tag)
+    : [...optimisticTags, tag];
+
+  startTransition(() => {
+    applyOptimistic(next);
+  });
+
+  setSelectedTags(next);
+};
+\`\`\`
+
+
+###  결과 및 배운 점
+  - **UX 측면:** 클릭 시 즉시 반응하는 부드러운 느낌을 구현해 사용자 만족도를 높였다.
+  - **기술적 측면:** useOptimistic의 개념을 이해하고, 향후 서버 연동 시 적용 가능성을 미리 체험했다.
+  - **확장 가능성:** 추후 백엔드 서버를 개발하게 된다면, 실제 비동기 요청과 결합해 더 깊이 있게 탐구해보고 싶다.
+
+  이번 실험은 단순히 “새 기술을 써봤다”가 아니라,
+  **사용자 경험을 더 좋게 만들기 위한 새로운 시도의 첫걸음**이었다고 생각한다.
+  앞으로도 이런 작고 빠른 실험들을 통해, 기술이 UX에 어떤 실질적인 변화를 줄 수 있는지를 꾸준히 탐구해나갈 계획이다.
+  `
 }
 
 

@@ -13,6 +13,7 @@ const JSX = new Set(["jsx"]);
 const TSX = new Set(["tsx", "ts"]); // ts도 TSX 트랙으로 처리
 const HTML = new Set(["html", "htm"]);
 const CSS = new Set(["css"]);
+const PLAIN = new Set(["code", "text", "plain"]);
 
 // const urlRegex = /((https?:\/\/[^\s]+)|(?:www\.[^\s]+))/g;
 
@@ -85,6 +86,13 @@ const makeConsoleHeader = `
   });
 `;
 
+function escapeHTML(s: string) {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
 export default function CodeSandboxBlock({
   code,
   language = "",
@@ -95,6 +103,9 @@ export default function CodeSandboxBlock({
   const isCSS = CSS.has(lang);
   const isJS = JS.has(lang);
   const isTSX = TSX.has(lang) || JSX.has(lang);
+  const isPLAIN = PLAIN.has(lang);
+
+  
 
   const [source, setSource] = useState(code);
   const [logs, setLogs] = useState<string[]>([]);
@@ -261,15 +272,24 @@ export default function CodeSandboxBlock({
   return (
     <div className={cn("my-6 rounded-2xl border overflow-hidden", className)}>
       <div className="flex items-center justify-between px-4 py-2 bg-muted/60 border-b">
-        <div className="text-xs text-muted-foreground">{language || "text"}</div>
-        <div className="flex gap-2">
-          <Button size="sm" className="hover:cursor-pointer" variant="outline" onClick={copy}>Copy</Button>
-          <Button size="sm" className="hover:cursor-pointer" variant="outline" onClick={reset}>Reset</Button>
-          <Button size="sm" className="hover:cursor-pointer" onClick={run} disabled={running}>
-            {running ? "Running..." : "Run"}
-          </Button>
-        </div>
+      <div className="text-xs text-muted-foreground">{language || "text"}</div>
+      <div className="flex gap-2">
+        <Button size="sm" className="hover:cursor-pointer" variant="outline" onClick={copy}>
+          Copy
+        </Button>
+        {!isPLAIN && (
+          <>
+            <Button size="sm" className="hover:cursor-pointer" variant="outline" onClick={reset}>
+              Reset
+            </Button>
+            <Button size="sm" className="hover:cursor-pointer" onClick={run} disabled={running}>
+              {running ? "Running..." : "Run"}
+            </Button>
+          </>
+        )}
       </div>
+    </div>
+
 
       <textarea
         value={source}
@@ -280,18 +300,19 @@ export default function CodeSandboxBlock({
       />
 
       <div className="border-t">
-        {isJS ? (
-          <>
-            <div className="p-0 w-full">
-              <iframe
-                key={iframeKey}
-                title="sandbox"
-                sandbox="allow-scripts"
-                srcDoc={doc}
-                className="w-full h-[360px] font-black"
-              />
-            </div>
-          </>
+        {isPLAIN ? (
+          <div className="p-0 w-full">
+          </div>
+        ) : isJS ? (
+          <div className="p-0 w-full">
+            <iframe
+              key={iframeKey}
+              title="sandbox"
+              sandbox="allow-scripts"
+              srcDoc={doc}
+              className="w-full h-[360px] font-black"
+            />
+          </div>
         ) : (
           <div className="p-0 w-full">
             <iframe

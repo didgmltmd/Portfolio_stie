@@ -66,7 +66,7 @@ export function ProjectListPage(){
 
     return(
         <div className="min-h-screen flex flex-col">
-            <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur lg:hidden">
+            <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur lg:hidden min-w-screen">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
                 <div>
                     <Sheet>
@@ -93,7 +93,7 @@ export function ProjectListPage(){
                 <ThemeToggle />
                 </div>
             </header>
-            <header className="hidden lg:block border-b sticky top-0 bg-background z-10">
+            <header className="hidden lg:block border-b sticky top-0 bg-background z-10 min-w-screen">
                 <div className=" flex flex-row justify-between">
                     <Link to="/">
                         <Button variant="ghost" className="gap-2 hover:cursor-pointer h-14 ml-[3rem]">
