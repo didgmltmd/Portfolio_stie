@@ -65,7 +65,7 @@ export function BlogList(){
 
 
     return(
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col w-full">
             <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur lg:hidden">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
                     <div>
@@ -96,7 +96,7 @@ export function BlogList(){
 
 
 
-            <header className="border-b sticky top-0 bg-background z-10 justify-between lg:block hidden min-w-screen">
+            <header className="border-b sticky top-0 bg-background z-10 justify-between lg:block hidden">
                 <div className="flex flex-row justify-between">
                     <Link to="/">
                         <Button variant="ghost" className="gap-2 hover:cursor-pointer h-14 ml-[3rem]">

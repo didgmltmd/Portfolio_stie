@@ -26,7 +26,7 @@ export default function BlogListSidebar({
 }:BlogSidebarProps) {
     return(
         <div className="flex-1 flex">
-            <aside className="w-64 border-r bg-muted/30 p-6">
+            <aside className="w-64 border-r bg-muted/30 p-6 min-h-sc">
                 <div className="sticky top-24">
                     <h3 className="mb-4">카테고리</h3>
                     <nav className="space-y-2">
