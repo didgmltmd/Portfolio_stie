@@ -72,7 +72,7 @@ export function Footer() {
           </div>
           
           <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© 2025 YHS Portfolio. Yonam Institute of Technology Univ</p>
+            <p>© 2025 YHS Portfolio. Yonam Institute of Technology</p>
           </div>
         </div>
       </div>

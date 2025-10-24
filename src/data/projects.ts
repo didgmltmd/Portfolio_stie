@@ -386,7 +386,7 @@ export const projects: Project[] = [
     overview: "노인들이 증상을 음성으로 말하면 AI가 이를 분석해 응급 여부를 판단하고, 병원을 추천·안내하는 스마트 요양 보조 서비스입니다. 음성(STT), 시각(OCR), 언어(NLP), 음성출력(TTS)을 결합하여 의료 접근성을 높이는 것을 목표로 했습니다.",
     period: "2025.09.27 - 2025.09.28",
     team: "프론트엔드 1명, 백엔드 2명, 의료데이터 담당 2명",
-    role: "프론트엔드 리드 및 백엔드 연동 개발",
+    role: "프론트엔드 개발 및 리드 개발자",
     keyFeatures: [
       {
         title:"음성 입력(STT)으로 증상 인식 및 텍스트 변환",
@@ -394,17 +394,17 @@ export const projects: Project[] = [
         relatedBlogId:"#"
       },
       {
-        title:"OpenAI API를 통한 증상 분석 및 응급/비응급 분류",
+        title:"KakoMap API를 이용해 현재위치와 주변 병원위치 표시",
         description:"#",
         relatedBlogId:"#"
       },
       {
-        title:"비응급 시 진료과 추천 및 근처 병원 검색 기능 (KakaoMap 연동)",
+        title:"병원 마커 클릭시 병원 예약",
         description:"#",
         relatedBlogId:"#"
       },
       {
-        title:"Google Vision OCR을 이용한 처방전 문자 인식",
+        title:"OCR을 이용한 처방전 문자 인식",
         description:"#",
         relatedBlogId:"#"
       },
@@ -414,7 +414,7 @@ export const projects: Project[] = [
         relatedBlogId:"#"
       },
       {
-        title:"Flask 백엔드와 Axios 통신으로 AI 분석 결과 연동",
+        title:"",
         description:"#",
         relatedBlogId:"#"
       },
