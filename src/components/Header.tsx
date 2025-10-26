@@ -16,9 +16,9 @@ export default function Header() {
                     포트폴리오입니다
                 </h1>
 
-                <p className="text-muted-foreground">
+                {/* <p className="text-muted-foreground">
                     끊임없이 도전해나가는 개발자입니다.
-                </p>
+                </p> */}
                 </div>
             </div>
             <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 rounded-full blur-3xl -z-10 translate-x-1/2"></div>
