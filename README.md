@@ -136,7 +136,29 @@
 
 ---
 
+### 블로그 목록 페이지
+<p align="center">
+  <img src="./images/BlogListPage_1.png" width="500" alt="블로그_목록" />
+  <img src="./images/BlogListPage_2.png" width="500" alt="블로그_목록" />
+</p>
 
+> **기능 요약**  
+> - 전체 | 공부 | 프로젝트 | 알고리즘 | 대외활동으로 분류하여 작성된 포스트정보를 제공합니다.
+> - 기술 태그로 필터링 기능을 제공하여 해당 기술을 가지고 작성한 포스터 정보를 볼 수 있습니다.
+
+---
+
+### 블로그 목록 페이지 ( Mobile )
+<p align="center">
+  <img src="./images/BlogListPage_mobile_1.png" width="350" alt="블로그_목록_모바일" />
+  <img src="./images/BlogListPage_mobile_2.png" width="370" alt="블로그_목록_모바일" />
+</p>
+
+> **기능 요약**
+> - 카테고리, 필터링 기능을 좌측 상단 햄버거 시트로서 구현했습니다.
+> - 우측 상단 토글버튼을 통해 다크모드를 사용할 수 있습니다.
+
+---
 
 
 
