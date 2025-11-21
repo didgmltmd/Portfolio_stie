@@ -40,3 +40,36 @@
   - npm
 
 
+---
+
+## 화면 구성 (UI Screens)
+
+### 메인 페이지
+<p align="center">
+  <img src="./images/MainPage.png" width="500" alt="메인 페이지" />
+  <img src="./images/MainPage_2.png" width="500" alt="메인 페이지" />
+</p>
+
+> **기능 요약**  
+> - SideBar를 통해 간단한 프로필과 수상경력, 연락처 정보를 제공합니다.
+> - Pinned 된 프로젝트에대한 정보를 제공합니다.
+> - Pinned 된 블로그 포스트에대한 정보를 제공합니다.
+
+---
+
+### 메인 페이지 ( Mobile )
+<p align="center">
+  <img src="./images/MainPage_mobile_1.png" width="350" alt="메인 페이지_모바일" />
+  <img src="./images/MainPage_mobile_2.png" width="350" alt="메인 페이지_모바일" />
+</p>
+
+> **기능 요약**  
+> - Sidebar를 좌측 상단 햄버거 시트를 통해 조회할 수 있습니다.
+> - 우측 상단 토글버튼을 통해 다크모드를 사용할 수 있습니다.
+
+---
+
+
+
+
+
