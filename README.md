@@ -94,6 +94,49 @@
 
 ---
 
+### 프로젝트 상세 페이지 
+<p align="center">
+  <img src="./images/ProjectDetailPage_1.png" width="700" alt="프로젝트_상세" />
+</p>
+
+> **기능 요약**  
+> - 데모 URL, 깃헙 주소, 프로젝트 진행 기간, 팀 구성, 나의 역할 에대한 정보를 제공합니다.
+> - 프로젝트에대한 간단한 설명을 제공합니다.
+
+<p align="center">
+  <img src="./images/ProjectDetailPage_2.png" width="700" alt="프로젝트_상세" />
+</p>
+
+> **기능 요약**  
+> - 프로젝트 구성 화면을 swipe 통해 구경할 수 있습니다.
+> - 프로젝트를 주요 기능별로 나누어 프로젝트 개요를 파악할 수 있습니다.
+> - 주요 기능에대해 어떻게 구현되었는지 우측 "관련 글"을 통해 이에대해 자세하게 작성된 블로그로 연결했습니다.
+
+<p align="center">
+  <img src="./images/ProjecDetailPage_3.png" width="700" alt="프로젝트_상세" />
+</p>
+
+> **기능 요약**  
+> - 프로젝트 구현을 위한 핵심기술들을 태그로 분류하여 정보를 제공합니다.
+
+<p align="center">
+  <img src="./images/ProjecDetailPage_4.png" width="700" alt="프로젝트_상세" />
+</p>
+
+> **기능 요약**  
+> - 해당 프로젝트를 진행하며 겪었던 어려움들에대해 기술하고 이에대한 해결방안을 짧게 작성했습니다.
+> - 우측 "자세히 보기"를 통해 해결방안에대해 자세하게 작성된 블로그글을 연결했습니다.
+
+<p align="center">
+  <img src="./images/ProjectDetailPage_5.png" width="700" alt="프로젝트_상세" />
+</p>
+
+> **기능 요약**  
+> - 해당 프로젝트에대한 KPT 회고정보를 제공합니다.
+
+---
+
+
 
 
 
