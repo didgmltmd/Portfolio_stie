@@ -161,6 +161,26 @@
 ---
 
 
+### 블로그 상세 페이지
+<p align="center">
+  <img src="./images/BlogDetailPage_1.png" width="700" alt="블로그_상세" />
+</p>
+
+> **기능 요약**
+> - 포스트 명, 작성된 시간, 태그에대한 정보를 Header에 제공합니다.
+> - 추가될예정: SideBar를 통한 목록 Navigation 기능을 제공할 예정입니다.
+
+<p align="center">
+  <img src="./images/BlogDetailPage_2.png" width="500" alt="블로그_상세" />
+  <img src="./images/BlogDetailPage_3.png" width="500" alt="블로그_상세" />
+</p>
+
+> **기능 요약**
+> - 코드 Sandbox 기능을 제공하여 코드를 직접 실행하여 결과(UI 및 기능)를 확인할 수 있습니다.
+
+---
+
+
 
 
 
