@@ -46,8 +46,8 @@
 
 ### 메인 페이지
 <p align="center">
-  <img src="./images/MainPage.png" width="500" alt="메인 페이지" />
-  <img src="./images/MainPage_2.png" width="500" alt="메인 페이지" />
+  <img src="./images/MainPage.png" width="700" alt="메인 페이지" />
+  <img src="./images/MainPage_2.png" width="700" alt="메인 페이지" />
 </p>
 
 > **기능 요약**  
@@ -71,8 +71,8 @@
 
 ### 프로젝트 목록 페이지
 <p align="center">
-  <img src="./images/ProjectListPage_1.png" width="500" alt="프로젝트_목록" />
-  <img src="./images/ProjectListPage_2.png" width="500" alt="프로젝트_목록" />
+  <img src="./images/ProjectListPage_1.png" width="700" alt="프로젝트_목록" />
+  <img src="./images/ProjectListPage_2.png" width="700" alt="프로젝트_목록" />
 </p>
 
 > **기능 요약**  
@@ -138,8 +138,8 @@
 
 ### 블로그 목록 페이지
 <p align="center">
-  <img src="./images/BlogListPage_1.png" width="500" alt="블로그_목록" />
-  <img src="./images/BlogListPage_2.png" width="500" alt="블로그_목록" />
+  <img src="./images/BlogListPage_1.png" width="700" alt="블로그_목록" />
+  <img src="./images/BlogListPage_2.png" width="700" alt="블로그_목록" />
 </p>
 
 > **기능 요약**  
@@ -171,8 +171,8 @@
 > - 추가될예정: SideBar를 통한 목록 Navigation 기능을 제공할 예정입니다.
 
 <p align="center">
-  <img src="./images/BlogDetailPage_2.png" width="500" alt="블로그_상세" />
-  <img src="./images/BlogDetailPage_3.png" width="500" alt="블로그_상세" />
+  <img src="./images/BlogDetailPage_2.png" width="700" alt="블로그_상세" />
+  <img src="./images/BlogDetailPage_3.png" width="700" alt="블로그_상세" />
 </p>
 
 > **기능 요약**
