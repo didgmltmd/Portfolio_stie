@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# 🌌 개인 포트폴리오 사이드
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> 프론트엔드 개발자로서 도전하며 성장 기록을 남기는 개인 포트폴리오 사이트입니다.  
+> 프로젝트, 활동, 기술 스택, 블로그에대한 정보를 한 번에 확인할 수 있도록 구성했습니다.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 배포 주소
 
-## React Compiler
+>  **Demo**: https://portfolio-stie.onrender.com/
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## ✨ 주요 기능 (Features)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **프로필 소개**
+  - 간단한 프로필 정보를 제공합니다.
+- **프로젝트 소개**
+  - 프로젝트 | 해커톤 | 토이 프로젝트로 분류하여 진행했던 프로젝트 정보를 제공합니다.
+  - 사용해본 기술 스택을 태그화 하여 필터링 기능을 제공합니다.
+  - 각 프로젝트에대해 배포되어있는 데모 URL을 제공합니다. ( RN 프로젝트 제외 )
+- **블로그 소개**
+  - 공부 | 프로젝트 | 알고리즘 | 대외활동 으로 분류하여 작성된 포스트 정보를 제공합니다.
+  - 샌드박스 기능을 제공하여 작성된 코드를 즉시 실행해보고 체험해볼 수 있습니다.
+- **다크/라이트 모드** 
+  - 토글로 테마 전환 가능합니다.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
+> 현재 포트폴리오 사이트는 처음부터 갈아엎을예정으로 개발이 잠시 중단되었습니다.
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🧱 기술 스택 (Tech Stack)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Front-end**
+  - React + TypeScript
+  - Vite
+  - Tailwind CSS 
+- **품질 & 개발 환경**
+  - ESLint
+  - npm
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
