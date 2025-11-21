@@ -69,6 +69,33 @@
 
 ---
 
+### 프로젝트 목록 페이지
+<p align="center">
+  <img src="./images/ProjectListPage_1.png" width="500" alt="프로젝트_목록" />
+  <img src="./images/ProjectListPage_2.png" width="500" alt="프로젝트_목록" />
+</p>
+
+> **기능 요약**  
+> - 전체 | 프로젝트 | 해커톤 | 토이 프로젝트 로 분류하여 프로젝트 정보를 제공합니다.
+> - 기술 태그를 분류하여 필터링 기능을 제공합니다.
+> - 프로젝트 카드의 데모, 코드 버튼을 통해 배포주소, 깃헙 레포를 구경할 수 있습니다.
+
+---
+
+### 프로젝트 목록 페이지 ( Mobile )
+<p align="center">
+  <img src="./images/ProjectListPage_mobile_1.png" width="250" alt="프로젝트_목록_모바일" />
+  <img src="./images/ProjectListPage_moblie_2.png" width="250" alt="프로젝트_목록_모바일" />
+</p>
+
+> **기능 요약**  
+> - 카테고리,기술태그 필터링 기능을 좌측 상단 햄버거시트로서 구현했습니다.
+> - 우측 상단 토글버튼을 통해 다크모드기능을 사용할 수 있습니다.
+
+---
+
+
+
 
 
 
